@@ -1,3 +1,46 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-nature",
+      "description": "Lush green forest background",
+      "imageUrl": "https://picsum.photos/seed/forest1/1920/1080",
+      "imageHint": "forest nature"
+    },
+    {
+      "id": "outdoor-training",
+      "description": "Team building exercise outdoors",
+      "imageUrl": "https://picsum.photos/seed/team1/800/600",
+      "imageHint": "outdoor training"
+    },
+    {
+      "id": "mangrove-planting",
+      "description": "People planting mangrove seedlings",
+      "imageUrl": "https://picsum.photos/seed/mangrove/800/600",
+      "imageHint": "mangrove planting"
+    },
+    {
+      "id": "nature-school",
+      "description": "Children learning in a forest environment",
+      "imageUrl": "https://picsum.photos/seed/school1/800/600",
+      "imageHint": "nature school"
+    },
+    {
+      "id": "indoor-leadership",
+      "description": "Leadership workshop in a natural light room",
+      "imageUrl": "https://picsum.photos/seed/workshop/800/600",
+      "imageHint": "indoor workshop"
+    },
+    {
+      "id": "gallery-1",
+      "description": "Reforestation activity",
+      "imageUrl": "https://picsum.photos/seed/reforest/600/400",
+      "imageHint": "reforestation"
+    },
+    {
+      "id": "gallery-2",
+      "description": "Climbing activity",
+      "imageUrl": "https://picsum.photos/seed/climb/600/400",
+      "imageHint": "climbing"
+    }
+  ]
 }
