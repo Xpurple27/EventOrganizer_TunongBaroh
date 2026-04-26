@@ -180,7 +180,7 @@ export default function BookingPage() {
                               <SelectItem value="3">Pelatihan Pengelolaan Lingkungan Berbasis Praktik</SelectItem>
                               <SelectItem value="4">Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir</SelectItem>
                               <SelectItem value="5">Pelatihan Penghijauan & Urban Forestry</SelectItem>
-                              <SelectItem value="6">Outdoor Leadership & Team Building (Lingkungan)</SelectItem>
+                              <SelectItem value="6">Outdoor Leadership & Team Building</SelectItem>
                               <SelectItem value="7">Pelatihan Pengelolaan Sampah & Daur Ulang</SelectItem>
                               <SelectItem value="8">Pelatihan Monitoring & Evaluasi Lingkungan</SelectItem>
                               <SelectItem value="9">Program Sekolah Alam (Kolaborasi DLHK)</SelectItem>

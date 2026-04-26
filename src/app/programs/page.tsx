@@ -50,7 +50,7 @@ const programs = [
   },
   {
     id: "6",
-    title: "Outdoor Leadership & Team Building (Lingkungan)",
+    title: "Outdoor Leadership & Team Building",
     category: "education",
     price: 1800000,
     duration: "3 Hari, 2 Malam",
