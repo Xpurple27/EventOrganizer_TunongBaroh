@@ -1,3 +1,4 @@
+
 # EcoCatalyst Hub - Tunong Baroh Event Organizer
 
 Proyek ini adalah platform manajemen acara dan katalog program untuk Tunong Baroh Event Organizer di Banda Aceh.
@@ -14,9 +15,15 @@ EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dal
 - **Database & Auth:** Firebase (Firestore & Authentication)
 - **AI:** Genkit (Google Gemini) untuk fitur cerdas
 
-## Cara Deployment ke Vercel
-1. Masuk ke [Vercel](https://vercel.com).
-2. Hubungkan akun GitHub Anda.
+## Cara Update Kode ke GitHub (Trigger Vercel Build)
+Jika Anda melakukan perubahan, jalankan perintah ini di terminal untuk memperbarui Vercel secara otomatis:
+1. `git add .`
+2. `git commit -m "Fix: Wrap useSearchParams in Suspense for Vercel build"`
+3. `git push origin main`
+
+## Cara Deployment ke Vercel (Langkah Pertama)
+1. Masuk ke [Vercel](https://vercel.com) menggunakan akun GitHub.
+2. Klik **"Add New"** -> **"Project"**.
 3. Impor repositori `EventOrganizer_TunongBaroh`.
 4. Tambahkan **Environment Variables** di dashboard Vercel:
    - `GOOGLE_GENAI_API_KEY`: (API Key dari Google AI Studio)
