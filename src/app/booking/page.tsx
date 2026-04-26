@@ -63,7 +63,6 @@ const programsList = [
   { id: "9", name: "Program Sekolah Alam (Kolaborasi DLHK)", min: 1 },
   { id: "10", name: "Pelatihan Budidaya Lebah", min: 1 },
   { id: "11", name: "Konservasi Alam: Penanaman Terumbu Karang", min: 1 },
-  { id: "12", name: "Konservasi Alam: Penghijauan", min: 1 },
   { id: "13", name: "Konservasi Alam: Penanaman Pohon", min: 1 },
   { id: "14", name: "Pelatihan Selam (Diving)", min: 1 },
 ];

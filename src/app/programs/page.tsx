@@ -108,16 +108,6 @@ const programs = [
     image: "gallery-rehab-1"
   },
   {
-    id: "12",
-    title: "Konservasi Alam: Penghijauan",
-    category: "conservation",
-    priceRange: "Rp 800.000",
-    minPeople: null,
-    duration: "1 Hari",
-    desc: "Program restorasi lahan kritis melalui penanaman vegetasi lokal.",
-    image: "gallery-1"
-  },
-  {
     id: "13",
     title: "Konservasi Alam: Penanaman Pohon",
     category: "conservation",
