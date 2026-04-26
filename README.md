@@ -18,7 +18,7 @@ EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dal
 ## Cara Update Kode ke GitHub (Trigger Vercel Build)
 Jika Anda melakukan perubahan, jalankan perintah ini di terminal untuk memperbarui Vercel secara otomatis:
 1. `git add .`
-2. `git commit -m "Fix: Wrap useSearchParams in Suspense for Vercel build"`
+2. `git commit -m "Fix: Final refactor for useSearchParams Suspense boundary"`
 3. `git push origin main`
 
 ## Cara Deployment ke Vercel (Langkah Pertama)
