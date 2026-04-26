@@ -19,7 +19,7 @@ export function Footer() {
               <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <Instagram className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com/awaluddin.azril" target="_blank" rel="noopener noreferrer">
                 <Facebook className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
               </a>
               <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
