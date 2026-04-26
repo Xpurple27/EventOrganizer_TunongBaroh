@@ -16,9 +16,15 @@ export function Footer() {
               Pembelajaran eksperiensial dan pelatihan berbasis alam. Membangun pemimpin, melindungi masa depan kita.
             </p>
             <div className="flex space-x-4">
-              <Instagram className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
-              <Facebook className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
-              <Youtube className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <Instagram className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
+              </a>
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <Facebook className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
+              </a>
+              <a href="https://youtube.com" target="_blank" rel="noopener noreferrer">
+                <Youtube className="h-5 w-5 text-muted-foreground hover:text-primary cursor-pointer" />
+              </a>
             </div>
           </div>
 
@@ -35,26 +41,28 @@ export function Footer() {
           <div>
             <h4 className="font-headline font-bold mb-4">Kategori</h4>
             <ul className="space-y-2 text-sm">
-              <li><Link href="/programs?cat=outdoor" className="text-muted-foreground hover:text-primary">Pelatihan Outdoor</Link></li>
-              <li><Link href="/programs?cat=indoor" className="text-muted-foreground hover:text-primary">Pelatihan Indoor</Link></li>
-              <li><Link href="/programs?cat=nature" className="text-muted-foreground hover:text-primary">Sekolah Alam</Link></li>
-              <li><Link href="/programs?cat=mangrove" className="text-muted-foreground hover:text-primary">Penanaman Mangrove</Link></li>
+              <li><Link href="/programs" className="text-muted-foreground hover:text-primary">Pelatihan Outdoor</Link></li>
+              <li><Link href="/programs" className="text-muted-foreground hover:text-primary">Konservasi Alam</Link></li>
+              <li><Link href="/programs" className="text-muted-foreground hover:text-primary">Sekolah Alam</Link></li>
+              <li><Link href="/programs" className="text-muted-foreground hover:text-primary">Penanaman Mangrove</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-headline font-bold mb-4">Hubungi Kami</h4>
             <ul className="space-y-3 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span>Aceh, Indonesia</span>
+              <li className="flex items-start gap-2 text-muted-foreground">
+                <MapPin className="h-4 w-4 text-primary mt-1 shrink-0" />
+                <span>Aceh Utara, Indonesia</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
-                <Phone className="h-4 w-4 text-primary" />
-                <span>+62 812 3456 7890</span>
+                <Phone className="h-4 w-4 text-primary shrink-0" />
+                <a href="https://wa.me/6281360911234" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                  +62 813-6091-1234 (Awaludin)
+                </a>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
-                <Mail className="h-4 w-4 text-primary" />
+                <Mail className="h-4 w-4 text-primary shrink-0" />
                 <span>halo@tunongbaroh.id</span>
               </li>
             </ul>
