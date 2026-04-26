@@ -2,53 +2,23 @@
 
 Proyek ini adalah platform manajemen acara dan katalog program untuk Tunong Baroh Event Organizer di Banda Aceh.
 
-## Langkah Migrasi ke GitHub
+## Status Proyek
+🚀 **Berhasil Dimigrasi ke GitHub:** [Xpurple27/EventOrganizer_TunongBaroh](https://github.com/Xpurple27/EventOrganizer_TunongBaroh)
 
-**PENTING:** Gunakan instruksi di bawah ini setelah Anda mengklik "Create Repository" di GitHub dengan nama `EventOrganizer_TunongBaroh`.
-
-Jika Anda melihat pesan **"nothing to commit, working tree clean"** di terminal pada langkah 3, itu artinya file Anda sudah tersimpan. Langsung lompat ke langkah nomor 5.
-
-### Urutan Perintah Lengkap:
-
-1.  **Inisialisasi Git:**
-    ```bash
-    git init
-    ```
-
-2.  **Tambahkan File:**
-    ```bash
-    git add .
-    ```
-
-3.  **Simpan Perubahan (Commit):**
-    ```bash
-    git commit -m "Initial commit: Tunong Baroh Hub"
-    ```
-
-4.  **Atur Branch Utama:**
-    ```bash
-    git branch -M main
-    ```
-
-5.  **Hubungkan ke GitHub:**
-    *(Pastikan Anda sudah klik "Create Repository" di website GitHub)*
-    ```bash
-    git remote add origin https://github.com/Xpurple27/EventOrganizer_TunongBaroh.git
-    ```
-    *Jika muncul error "remote origin already exists", ketik: `git remote remove origin` lalu ulangi perintah di atas.*
-
-6.  **Unggah Kode:**
-    ```bash
-    git push -u origin main --force
-    ```
+## Deskripsi
+EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dalam merencanakan kegiatan luar ruang (outdoor training), sekolah alam, dan aksi konservasi lingkungan (seperti penanaman mangrove) di wilayah Aceh.
 
 ## Teknologi yang Digunakan
-- **Framework:** Next.js 15
+- **Framework:** Next.js 15 (App Router)
 - **UI:** ShadCN UI & Tailwind CSS
-- **Database & Auth:** Firebase (Firestore & Auth)
-- **AI:** Genkit (Google Gemini)
+- **Database & Auth:** Firebase (Firestore & Authentication)
+- **AI:** Genkit (Google Gemini) untuk fitur cerdas
 
 ## Kontak Operasional
-- **Awaludin:** +62 813-6091-1234
-- **Dedek:** +62 823-6100-3219
+Jika Anda ingin berkolaborasi atau memesan sesi, silakan hubungi tim kami:
+- **Awaludin:** [+62 813-6091-1234](https://wa.me/6281360911234)
+- **Dedek:** [+62 823-6100-3219](https://wa.me/6282361003219)
 - **Lokasi:** Banda Aceh, Indonesia
+
+---
+&copy; 2024 Tunong Baroh Event Organizer. Hak Cipta Dilindungi.
