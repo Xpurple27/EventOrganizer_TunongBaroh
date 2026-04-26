@@ -54,7 +54,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary mt-1 shrink-0" />
-                <span>Aceh Utara, Indonesia</span>
+                <span>Banda Aceh, Indonesia</span>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary shrink-0" />

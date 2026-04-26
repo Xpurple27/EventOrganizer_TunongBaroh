@@ -64,7 +64,7 @@ export default function ImpactPage() {
                   <MapPin className="h-6 w-6 text-primary shrink-0" />
                   <div>
                     <h4 className="font-bold">Lokasi Lokal</h4>
-                    <p className="text-sm text-muted-foreground">Kami fokus pada pesisir Aceh Utara.</p>
+                    <p className="text-sm text-muted-foreground">Kami beroperasi di wilayah pesisir Aceh.</p>
                   </div>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function ImpactPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-4 left-4 flex items-center gap-2 text-white bg-black/20 backdrop-blur-sm p-2 rounded-lg text-xs">
                     <Info className="h-4 w-4" />
-                    Situs Proyek: Gampong Tunong
+                    Markas: Banda Aceh
                   </div>
                 </div>
               </CardContent>

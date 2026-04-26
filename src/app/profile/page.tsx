@@ -57,7 +57,7 @@ export default function ProfilePage() {
                 Tunong Baroh Outdoor Management Training lahir dari kecintaan mendalam terhadap alam Aceh dan kebutuhan akan kepemimpinan yang berwawasan lingkungan. Kami percaya bahwa ruang kelas terbaik tidak memiliki dinding, dan guru terbaik adalah pengalaman langsung di alam terbuka.
               </p>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Berbasis di Aceh Utara, kami telah mendedikasikan diri untuk menjembatani antara pendidikan eksperiensial, pengembangan tim korporat, dan program konservasi strategis yang memberikan dampak berkelanjutan bagi ekosistem lokal.
+                Berbasis di Banda Aceh, kami telah mendedikasikan diri untuk menjembatani antara pendidikan eksperiensial, pengembangan tim korporat, dan program konservasi strategis yang memberikan dampak berkelanjutan bagi ekosistem lokal.
               </p>
               <div className="grid grid-cols-2 gap-6 pt-4">
                 <div className="flex gap-3">
@@ -131,7 +131,7 @@ export default function ProfilePage() {
           <div className="text-center mb-16">
             <Users className="h-10 w-10 text-primary mx-auto mb-4" />
             <h2 className="font-headline text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-            <p className="text-muted-foreground text-lg">Para profesional di balik program-program Tunong Baroh.</p>
+            <p className="text-muted-foreground text-lg">Para profesional di balik program-gram Tunong Baroh.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -171,11 +171,11 @@ export default function ProfilePage() {
             <MapPin className="h-8 w-8 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-4 font-headline">Markas Operasional</h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Kami berbasis di Aceh Utara, mengelola berbagai situs kegiatan mulai dari pesisir pantai untuk mangrove hingga kawasan hutan lindung.
+              Kami berbasis di Banda Aceh, mengelola berbagai situs kegiatan mulai dari pesisir pantai untuk mangrove hingga kawasan hutan lindung di seluruh Aceh.
             </p>
             <div className="bg-white p-4 rounded-3xl shadow-sm inline-block">
               <div className="px-6 py-3 border-2 border-dashed border-secondary rounded-2xl font-bold text-primary">
-                Aceh Utara, Indonesia
+                Banda Aceh, Indonesia
               </div>
             </div>
           </div>
