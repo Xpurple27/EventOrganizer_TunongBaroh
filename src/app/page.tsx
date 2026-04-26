@@ -12,11 +12,11 @@ export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-nature");
   const highlights = [
     {
-      title: "Manajemen & Kepemimpinan",
-      desc: "Pelatihan intensif untuk membangun kapasitas organisasi dan kepemimpinan yang berintegritas.",
+      title: "Kepemimpinan & Kerja Tim",
+      desc: "Kolaborasi tim melalui tantangan fisik di alam yang mengasah kepedulian lingkungan dan jiwa kepemimpinan.",
       icon: Users,
-      image: "indoor-leadership",
-      id: "1"
+      image: "gallery-2",
+      id: "6"
     },
     {
       title: "Konservasi & Rehabilitasi",
@@ -139,7 +139,7 @@ export default function Home() {
                       <h3 className="text-2xl font-bold mb-3 font-headline h-16">{item.title}</h3>
                       <p className="text-muted-foreground mb-6 line-clamp-3 leading-relaxed">{item.desc}</p>
                       <Button asChild variant="outline" className="w-full rounded-xl border-primary text-primary hover:bg-primary hover:text-white">
-                        <Link href={`/programs?cat=all`}>Pelajari Lebih Lanjut</Link>
+                        <Link href={`/programs`}>Pelajari Lebih Lanjut</Link>
                       </Button>
                     </CardContent>
                   </Card>

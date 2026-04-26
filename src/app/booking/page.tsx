@@ -177,8 +177,6 @@ export default function BookingPage() {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="1">Pelatihan Manajemen</SelectItem>
-                              <SelectItem value="2">Pelatihan Kepemimpinan</SelectItem>
                               <SelectItem value="3">Pelatihan Pengelolaan Lingkungan Berbasis Praktik</SelectItem>
                               <SelectItem value="4">Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir</SelectItem>
                               <SelectItem value="5">Pelatihan Penghijauan & Urban Forestry</SelectItem>

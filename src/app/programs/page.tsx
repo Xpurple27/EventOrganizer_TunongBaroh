@@ -15,31 +15,12 @@ import { Input } from "@/components/ui/input";
 
 const categories = [
   { id: "all", name: "Semua Program", icon: null },
-  { id: "management", name: "Manajemen & Kepemimpinan", icon: Users },
   { id: "env-mgmt", name: "Pengelolaan Lingkungan", icon: ClipboardCheck },
   { id: "conservation", name: "Konservasi & Kehutanan", icon: Trees },
   { id: "education", name: "Pendidikan & Keterampilan", icon: School },
 ];
 
 const programs = [
-  {
-    id: "1",
-    title: "Pelatihan Manajemen",
-    category: "management",
-    price: 1500000,
-    duration: "2 Hari",
-    desc: "Optimalkan efisiensi organisasi Anda dengan prinsip manajemen modern yang adaptif.",
-    image: "indoor-leadership"
-  },
-  {
-    id: "2",
-    title: "Pelatihan Kepemimpinan",
-    category: "management",
-    price: 2000000,
-    duration: "3 Hari",
-    desc: "Membangun karakter pemimpin yang tangguh, visioner, dan mampu menginspirasi tim.",
-    image: "outdoor-training"
-  },
   {
     id: "3",
     title: "Pelatihan Pengelolaan Lingkungan Berbasis Praktik",
@@ -169,7 +150,7 @@ export default function ProgramsPage() {
           <header className="mb-12">
             <h1 className="font-headline text-5xl font-bold text-primary mb-4">Katalog Program</h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Pilih dari berbagai pelatihan manajemen, lingkungan, dan pendidikan alam kami. Setiap program dirancang untuk memberikan dampak nyata bagi peserta dan bumi.
+              Pilih dari berbagai pelatihan lingkungan, konservasi, dan pendidikan alam kami. Setiap program dirancang untuk memberikan dampak nyata bagi peserta dan bumi.
             </p>
           </header>
 
