@@ -1,0 +1,153 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * FIREBASE SECURITY RULES DOCUMENTATION
+     * 
+     * Core Philosophy:
+     * This ruleset implements a dual-layer authorization model combining Path-Based Ownership and 
+     * Global Administrative Roles. The architecture prioritizes "Authorization Independence" by 
+     * ensuring that most security decisions can be made using the document path and user's 
+     * authentication token, minimizing the need for expensive cross-document lookups (get() calls).
+     * 
+     * Data Structure:
+     * 1. Private User Data: Stored under `/users/{userId}/...`. Access is strictly tied to the {userId} wildcard.
+     * 2. Administrative Control: Managed via the `/roles_admin` collection where the document ID represents the admin UID.
+     * 3. Public/Shared Catalogs: Collections like `/programs` and `/seedlings` are readable by all authenticated users.
+     * 4. Conditional Content: Testimonials follow a "Public-Conditional" pattern where visibility is controlled 
+     *    by an `isApproved` flag.
+     * 
+     * Key Security Decisions:
+     * - Prototyping Mode: Data types and full object shapes are not enforced to allow for rapid schema evolution.
+     * - Relational Integrity: On document creation, rules enforce that internal foreign keys (e.g., `userId`) 
+     *   match the document's path and the authenticated user's ID.
+     * - Immutability: Critical relational fields are made immutable during updates to prevent data corruption.
+     * - Query Safety: List operations are scoped to owner-only paths or specific boolean flags (Query as Authorization Predicate).
+     */
+
+    // --- Helper Functions ---
+
+    /** Checks if the user is authenticated with any provider. */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /** Checks if the current user's UID matches the provided userId. */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    /** 
+     * Checks if the user has administrative privileges.
+     * Relies on the existence of a document in the roles_admin collection.
+     */
+    function isAdmin() {
+      return isSignedIn() && exists(/databases/$(database)/documents/roles_admin/$(request.auth.uid));
+    }
+
+    /** Verifies ownership for operations on existing documents (update/delete). */
+    function isExistingOwner(userId) {
+      return resource != null && isOwner(userId);
+    }
+
+    // --- Collection Rules ---
+
+    /**
+     * @description Rules for the top-level User profile documents.
+     * @path /users/{userId}
+     * @allow (create) if auth.uid == 'user_123' and request.resource.data.id == 'user_123'
+     * @deny (list) if request is not for the specific user's own profile.
+     * @principle Enforces path-based ownership and self-creation for user profiles.
+     */
+    match /users/{userId} {
+      allow get, list: if isOwner(userId) || isAdmin();
+      allow create: if isOwner(userId) && request.resource.data.id == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.id == resource.data.id;
+      allow delete: if isExistingOwner(userId) || isAdmin();
+
+      /**
+       * @description Individual program bookings for an institution/school.
+       * @path /users/{userId}/bookings/{bookingId}
+       * @allow (create) if auth.uid == userId and data contains matching userId.
+       * @deny (update) if attempting to change the userId field.
+       * @principle Path-based ownership with denormalized field validation for relational integrity.
+       */
+      match /bookings/{bookingId} {
+        allow get, list: if isOwner(userId) || isAdmin();
+        allow create: if isOwner(userId) && request.resource.data.userId == userId;
+        allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+        allow delete: if isExistingOwner(userId) || isAdmin();
+      }
+
+      /**
+       * @description Seedling orders placed by an institution/school.
+       * @path /users/{userId}/seedlingOrders/{orderId}
+       * @allow (list) if auth.uid == userId.
+       * @deny (create) if auth.uid does not match the userId in the path.
+       * @principle Scopes access to the specific owner's data tree.
+       */
+      match /seedlingOrders/{orderId} {
+        allow get, list: if isOwner(userId) || isAdmin();
+        allow create: if isOwner(userId) && request.resource.data.userId == userId;
+        allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+        allow delete: if isExistingOwner(userId) || isAdmin();
+      }
+    }
+
+    /**
+     * @description Collection for DBAC (Database Access Control) admin markers.
+     * @path /roles_admin/{adminId}
+     * @allow (get) if the user is an admin.
+     * @deny (create, update, delete) for all non-admin users.
+     * @principle Uses document existence to define global application roles.
+     */
+    match /roles_admin/{adminId} {
+      allow get, list: if isAdmin();
+      allow create, update, delete: if isAdmin(); // Managed by higher-level admins or backend only.
+    }
+
+    /**
+     * @description Publicly viewable catalog of training and nature school programs.
+     * @path /programs/{programId}
+     * @allow (get, list) if the user is signed in.
+     * @deny (write) if the user is not an admin.
+     * @principle Read-only access for public catalog data; Admin-only write access.
+     */
+    match /programs/{programId} {
+      allow get, list: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Publicly viewable catalog of available seedlings.
+     * @path /seedlings/{seedlingId}
+     * @allow (list) if user is signed in.
+     * @deny (create) if user is not an admin.
+     * @principle Read-only access for public seedling inventory.
+     */
+    match /seedlings/{seedlingId} {
+      allow get, list: if isSignedIn();
+      allow create, update, delete: if isAdmin();
+    }
+
+    /**
+     * @description Feedback and reviews from participants.
+     * @path /testimonials/{testimonialId}
+     * @allow (list) only if 'isApproved' is true.
+     * @allow (create) for any signed-in user to submit feedback.
+     * @deny (update) if the user is not an admin (prevents self-approval).
+     * @principle Uses Query as Authorization Predicate (QAP) for public content.
+     */
+    match /testimonials/{testimonialId} {
+      // Users can get if approved; Admins can get any.
+      allow get: if resource.data.isApproved == true || isAdmin();
+      // List rules in rules_version 2 automatically apply as filters for queries.
+      allow list: if resource.data.isApproved == true || isAdmin();
+      // Any authenticated user can submit a testimonial.
+      allow create: if isSignedIn();
+      // Approval and moderation are restricted to admins.
+      allow update, delete: if isAdmin();
+    }
+  }
+}

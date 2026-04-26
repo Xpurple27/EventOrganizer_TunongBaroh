@@ -1,0 +1,486 @@
+{
+  "entities": {
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents an institution or school that utilizes the platform for program bookings or seedling orders.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the User (institution or school)."
+        },
+        "institutionName": {
+          "type": "string",
+          "description": "The official name of the institution or school."
+        },
+        "contactPersonName": {
+          "type": "string",
+          "description": "The name of the primary contact person for the institution or school."
+        },
+        "contactEmail": {
+          "type": "string",
+          "description": "The primary email address for the institution or school contact.",
+          "format": "email"
+        },
+        "contactPhoneNumber": {
+          "type": "string",
+          "description": "The primary phone number for the institution or school contact."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the user account was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the user account was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "institutionName",
+        "contactPersonName",
+        "contactEmail",
+        "contactPhoneNumber",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Program": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Program",
+      "type": "object",
+      "description": "Details about the various outdoor/indoor training, nature school, or environmental programs offered by Tunong Baroh Outdoor Management Training.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Program."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the program."
+        },
+        "category": {
+          "type": "string",
+          "description": "The category of the program (e.g., Outdoor Training, Indoor Training, Sekolah Alam, Penghijauan & Mangrove)."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the program's content and activities."
+        },
+        "duration": {
+          "type": "string",
+          "description": "The typical duration of the program (e.g., '2 days 1 night', '1 day')."
+        },
+        "location": {
+          "type": "string",
+          "description": "The primary location where the program takes place."
+        },
+        "price": {
+          "type": "number",
+          "description": "The base price for the program, typically per participant or per package."
+        },
+        "expectedOutcome": {
+          "type": "string",
+          "description": "The anticipated learning outcomes or benefits participants will gain from the program."
+        },
+        "imageUrls": {
+          "type": "array",
+          "description": "An array of URLs pointing to images related to the program.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "videoUrls": {
+          "type": "array",
+          "description": "An array of URLs pointing to videos related to the program.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the program record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the program record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "category",
+        "description",
+        "duration",
+        "location",
+        "price",
+        "expectedOutcome",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Booking": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Booking",
+      "type": "object",
+      "description": "Represents a reservation made by an institution or school for a specific program.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Booking."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User (institution or school) who made the booking. (Relationship: User 1:N Booking)"
+        },
+        "programId": {
+          "type": "string",
+          "description": "Reference to the Program that is being booked. (Relationship: Program 1:N Booking)"
+        },
+        "bookingDate": {
+          "type": "string",
+          "description": "The requested date for the program activity.",
+          "format": "date-time"
+        },
+        "numberOfParticipants": {
+          "type": "number",
+          "description": "The total number of participants expected for the program."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the booking (e.g., 'Pending', 'Confirmed', 'Cancelled', 'Completed')."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes or special requests made by the user during booking."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the booking record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the booking record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "programId",
+        "bookingDate",
+        "numberOfParticipants",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Seedling": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Seedling",
+      "type": "object",
+      "description": "Details about the types of seedlings available for environmental programs or direct purchase.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Seedling type."
+        },
+        "name": {
+          "type": "string",
+          "description": "The common name of the seedling type (e.g., 'Mangrove', 'Jati')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A description of the seedling, including its characteristics, benefits, or growing conditions."
+        },
+        "price": {
+          "type": "number",
+          "description": "The price per seedling unit."
+        },
+        "imageUrl": {
+          "type": "string",
+          "description": "URL to an image of the seedling."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the seedling record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the seedling record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "price",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "SeedlingOrder": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "SeedlingOrder",
+      "type": "object",
+      "description": "Represents a transaction or commitment for seedlings, either for purchase or participation in planting programs.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Seedling Order."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to the User (institution or school) who placed the seedling order. (Relationship: User 1:N SeedlingOrder)"
+        },
+        "seedlingId": {
+          "type": "string",
+          "description": "Reference to the specific Seedling type being ordered. (Relationship: Seedling 1:N SeedlingOrder)"
+        },
+        "quantity": {
+          "type": "number",
+          "description": "The number of seedlings ordered."
+        },
+        "orderDate": {
+          "type": "string",
+          "description": "The date when the seedling order was placed.",
+          "format": "date-time"
+        },
+        "eventType": {
+          "type": "string",
+          "description": "The type of event associated with the seedling order (e.g., 'Purchase', 'PlantingProgram')."
+        },
+        "locationDetails": {
+          "type": "string",
+          "description": "Specific details or address for the seedling delivery or planting location, if applicable."
+        },
+        "status": {
+          "type": "string",
+          "description": "The current status of the seedling order (e.g., 'Pending', 'Completed', 'Cancelled')."
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "The total financial amount for this seedling order."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the seedling order record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the seedling order record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "seedlingId",
+        "quantity",
+        "orderDate",
+        "eventType",
+        "status",
+        "totalAmount",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "Testimonial": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Testimonial",
+      "type": "object",
+      "description": "Feedback and reviews provided by participants or institutions after engaging with Tunong Baroh's programs or services.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the Testimonial."
+        },
+        "authorName": {
+          "type": "string",
+          "description": "The name of the person or institution providing the testimonial."
+        },
+        "authorRole": {
+          "type": "string",
+          "description": "The role or affiliation of the author (e.g., 'Sekolah XYZ Principal', 'Instansi ABC Representative')."
+        },
+        "content": {
+          "type": "string",
+          "description": "The text content of the testimonial."
+        },
+        "programId": {
+          "type": "string",
+          "description": "Optional reference to the Program that the testimonial is specifically about. (Relationship: Program 0:N Testimonial)"
+        },
+        "datePosted": {
+          "type": "string",
+          "description": "The date when the testimonial was submitted or approved.",
+          "format": "date-time"
+        },
+        "isApproved": {
+          "type": "boolean",
+          "description": "A boolean indicating whether the testimonial has been approved for public display."
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when the testimonial record was created.",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Timestamp when the testimonial record was last updated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "authorName",
+        "authorRole",
+        "content",
+        "datePosted",
+        "isApproved",
+        "createdAt",
+        "updatedAt"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profile information for institutions or schools. The document ID `{userId}` must match the authenticated user's `request.auth.uid`. This path ensures path-based ownership for user profiles and nested user data.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user (institution or school), matching `request.auth.uid`."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/roles_admin/{adminId}",
+        "definition": {
+          "entityName": "AdminRole",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "This collection serves as a Database Access Control (DBAC) mechanism. The existence of a document at `/roles_admin/{request.auth.uid}` grants the authenticated user 'Admin' privileges. This enables authorization independence by checking for document existence, not content, and avoids `get()` calls to other collections.",
+          "params": [
+            {
+              "name": "adminId",
+              "description": "The unique identifier of an admin user, matching `request.auth.uid`."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/programs/{programId}",
+        "definition": {
+          "entityName": "Program",
+          "schema": {
+            "$ref": "#/backend/entities/Program"
+          },
+          "description": "Publicly accessible catalog of all outdoor/indoor training, nature school, and environmental programs offered. All documents in this collection share the same security posture (read access for all authenticated users). Supports QAPs for secure listing.",
+          "params": [
+            {
+              "name": "programId",
+              "description": "The unique identifier for a specific program."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/seedlings/{seedlingId}",
+        "definition": {
+          "entityName": "Seedling",
+          "schema": {
+            "$ref": "#/backend/entities/Seedling"
+          },
+          "description": "Publicly accessible catalog of all seedling types available for purchase or environmental programs. All documents in this collection share the same security posture (read access for all authenticated users). Supports QAPs for secure listing.",
+          "params": [
+            {
+              "name": "seedlingId",
+              "description": "The unique identifier for a specific seedling type."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/testimonials/{testimonialId}",
+        "definition": {
+          "entityName": "Testimonial",
+          "schema": {
+            "$ref": "#/backend/entities/Testimonial"
+          },
+          "description": "Publicly viewable testimonials. Read access is conditional on the `isApproved` field being `true`. Admin users have full write access to manage testimonials. Supports QAPs by filtering on the `isApproved` field.",
+          "params": [
+            {
+              "name": "testimonialId",
+              "description": "The unique identifier for a specific testimonial."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/bookings/{bookingId}",
+        "definition": {
+          "entityName": "Booking",
+          "schema": {
+            "$ref": "#/backend/entities/Booking"
+          },
+          "description": "Stores individual program bookings made by a specific user (institution/school). The `userId` in the path ensures direct ownership. The document also includes the `userId` field, denormalized from the parent path for authorization independence and simplified security rules (e.g., `request.auth.uid == userId`). Supports QAPs as users can only list their own bookings via this path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who made the booking, matching the parent user document ID and `request.auth.uid`."
+            },
+            {
+              "name": "bookingId",
+              "description": "The unique identifier for a specific booking."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/seedlingOrders/{orderId}",
+        "definition": {
+          "entityName": "SeedlingOrder",
+          "schema": {
+            "$ref": "#/backend/entities/SeedlingOrder"
+          },
+          "description": "Stores individual seedling orders placed by a specific user (institution/school). The `userId` in the path ensures direct ownership. The document also includes the `userId` field, denormalized from the parent path for authorization independence and simplified security rules (e.g., `request.auth.uid == userId`). Supports QAPs as users can only list their own orders via this path.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique identifier of the user who placed the order, matching the parent user document ID and `request.auth.uid`."
+            },
+            {
+              "name": "orderId",
+              "description": "The unique identifier for a specific seedling order."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The recommended Firestore structure is designed to adhere strictly to the core design principles, focusing on Authorization Independence, Structural Segregation, and clear Access Modeling to ensure security, scalability, and debuggability. \n\n**Authorization Independence:**\nThis is achieved primarily through two mechanisms:\n1.  **Path-Based Ownership:** For user-specific data like `Bookings` and `SeedlingOrders`, documents are nested under a user's path (`/users/{userId}/bookings/{bookingId}` and `/users/{userId}/seedlingOrders/{orderId}`). This means the document's parent path already contains the `userId` (`request.auth.uid`), eliminating the need for `get()` calls to a parent `User` document to determine ownership. The `userId` field within the `Booking` and `SeedlingOrder` documents is denormalized, explicitly duplicating the owner's ID for robust and atomic security rule checks (e.g., `allow write: if request.auth.uid == userId;`).\n2.  **Explicit Role Management:** Admin roles are managed in a top-level collection (`/roles_admin/{adminId}`). Authorization for admin access simply checks for the existence of a document at `roles_admin/request.auth.uid`, avoiding any hierarchical data dependencies.\n\n**Structural Segregation & QAPs (Query as Authorization Predicates):**\nCollections are segregated based on their security posture, allowing for simple and robust security rules, especially for `list` operations (QAPs):\n*   **Public Catalogs (`/programs`, `/seedlings`):** These collections contain data intended for public viewing (read access for all authenticated users, possibly unauthenticated for display). This homogeneous security posture means `list` operations are straightforward, as all documents in the collection can be safely returned to a user without complex filtering or `get()` calls.\n*   **Public-Conditional (`/testimonials`):** Testimonials are publicly readable only if their `isApproved` field is `true`. This segregation of 'approved' from 'unapproved' (conceptually, not physically in different collections, but by a clear flag) allows for a simple `list` rule (`allow list: if resource.data.isApproved == true;`). Write access is restricted to admins.\n*   **Private User-Owned Data (`/users/{userId}/bookings`, `/users/{userId}/seedlingOrders`):** By nesting these under `/users/{userId}`, a user can only query their own bookings or orders by constructing a path that matches their `request.auth.uid`. This naturally enforces QAPs; a user cannot `list` another user's private data, as their `request.auth.uid` would not match the `{userId}` wildcard in the path.\n*   **Admin Data (`/roles_admin`):** Access is based on the existence of a document matching the user's UID, providing clear and atomic role checks.\n\nThis design minimizes complexity, enhances security by making authorization explicit within the document or path, and ensures that Firestore security rules are simple, atomic, and easy to debug, while fully supporting QAPs for efficient and secure data retrieval."
+  }
+}
