@@ -14,6 +14,14 @@ EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dal
 - **Database & Auth:** Firebase (Firestore & Authentication)
 - **AI:** Genkit (Google Gemini) untuk fitur cerdas
 
+## Cara Deployment ke Vercel
+1. Masuk ke [Vercel](https://vercel.com).
+2. Hubungkan akun GitHub Anda.
+3. Impor repositori `EventOrganizer_TunongBaroh`.
+4. Tambahkan **Environment Variables** di dashboard Vercel:
+   - `GOOGLE_GENAI_API_KEY`: (API Key dari Google AI Studio)
+5. Klik **Deploy**.
+
 ## Kontak Operasional
 Jika Anda ingin berkolaborasi atau memesan sesi, silakan hubungi tim kami:
 - **Awaludin:** [+62 813-6091-1234](https://wa.me/6281360911234)
