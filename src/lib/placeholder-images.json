@@ -41,6 +41,30 @@
       "description": "Climbing activity",
       "imageUrl": "https://picsum.photos/seed/climb/600/400",
       "imageHint": "climbing"
+    },
+    {
+      "id": "gallery-mangrove-1",
+      "description": "Mangrove conservation area",
+      "imageUrl": "https://picsum.photos/seed/mangrove2/800/600",
+      "imageHint": "mangrove forest"
+    },
+    {
+      "id": "gallery-team-1",
+      "description": "Group discussion in forest",
+      "imageUrl": "https://picsum.photos/seed/group1/800/600",
+      "imageHint": "team meeting"
+    },
+    {
+      "id": "gallery-school-1",
+      "description": "Students observing plants",
+      "imageUrl": "https://picsum.photos/seed/student1/800/600",
+      "imageHint": "student learning"
+    },
+    {
+      "id": "gallery-rehab-1",
+      "description": "Coastline rehabilitation",
+      "imageUrl": "https://picsum.photos/seed/beach1/800/600",
+      "imageHint": "coastal rehabilitation"
     }
   ]
 }
