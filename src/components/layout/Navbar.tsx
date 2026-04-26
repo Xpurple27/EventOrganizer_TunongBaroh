@@ -11,6 +11,7 @@ const navLinks = [
   { name: "Program", href: "/programs" },
   { name: "Dampak Lingkungan", href: "/impact" },
   { name: "Galeri", href: "/gallery" },
+  { name: "Profil", href: "/profile" },
 ];
 
 export function Navbar() {

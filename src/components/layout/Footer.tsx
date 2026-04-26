@@ -33,8 +33,9 @@ export function Footer() {
             <ul className="space-y-2 text-sm">
               <li><Link href="/programs" className="text-muted-foreground hover:text-primary">Semua Program</Link></li>
               <li><Link href="/impact" className="text-muted-foreground hover:text-primary">Dampak Lingkungan</Link></li>
+              <li><Link href="/profile" className="text-muted-foreground hover:text-primary">Profil Lembaga</Link></li>
+              <li><Link href="/gallery" className="text-muted-foreground hover:text-primary">Galeri Kegiatan</Link></li>
               <li><Link href="/booking" className="text-muted-foreground hover:text-primary">Pesan Sesi</Link></li>
-              <li><Link href="/gallery" className="text-muted-foreground hover:text-primary">Galeri</Link></li>
             </ul>
           </div>
 
