@@ -6,28 +6,31 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ArrowRight, Trees, BookOpen, Users, Droplets } from "lucide-react";
+import { ArrowRight, Trees, BookOpen, Users, Droplets, ClipboardCheck } from "lucide-react";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-nature");
   const highlights = [
     {
-      title: "Pelatihan Outdoor",
-      desc: "Program kepemimpinan dan pembentukan tim yang berlatar di alam liar.",
-      icon: Trees,
-      image: "outdoor-training"
+      title: "Manajemen & Kepemimpinan",
+      desc: "Pelatihan intensif untuk membangun kapasitas organisasi dan kepemimpinan yang berintegritas.",
+      icon: Users,
+      image: "indoor-leadership",
+      id: "1"
     },
     {
-      title: "Sekolah Alam",
-      desc: "Program pendidikan bagi siswa untuk terhubung kembali dengan lingkungan.",
-      icon: BookOpen,
-      image: "nature-school"
-    },
-    {
-      title: "Dampak Lingkungan",
-      desc: "Aksi langsung melalui penanaman mangrove dan reboisasi.",
+      title: "Konservasi & Rehabilitasi",
+      desc: "Aksi nyata rehabilitasi pesisir dan penanaman mangrove untuk menjaga garis pantai Aceh.",
       icon: Droplets,
-      image: "mangrove-planting"
+      image: "mangrove-planting",
+      id: "4"
+    },
+    {
+      title: "Pengelolaan Lingkungan",
+      desc: "Pelatihan praktik pengelolaan limbah dan monitoring lingkungan yang berkelanjutan.",
+      icon: ClipboardCheck,
+      image: "gallery-1",
+      id: "3"
     }
   ];
 
@@ -72,7 +75,7 @@ export default function Home() {
               <h2 className="font-headline text-4xl font-bold text-primary mb-4">Mengapa Tunong Baroh?</h2>
               <div className="h-1 w-20 bg-accent mx-auto mb-6 rounded-full" />
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Kami percaya bahwa cara terbaik untuk belajar adalah melalui pengalaman. Program kami dirancang untuk menantang dan menginspirasi.
+                Kami percaya bahwa cara terbaik untuk belajar adalah melalui pengalaman langsung. Program kami dirancang untuk menantang, mengedukasi, dan menginspirasi.
               </p>
             </div>
 
@@ -82,21 +85,21 @@ export default function Home() {
                   <Users className="h-8 w-8 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold mb-3">Fasilitator Ahli</h3>
-                <p className="text-muted-foreground">Tim kami terdiri dari profesional manajemen outdoor bersertifikat dan pecinta lingkungan.</p>
+                <p className="text-muted-foreground">Tim profesional bersertifikat dalam manajemen outdoor dan pelestarian lingkungan.</p>
               </div>
               <div className="text-center group">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                   <Trees className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Lokasi Asri</h3>
-                <p className="text-muted-foreground">Kami beroperasi di beberapa lingkungan alam yang paling indah dan beragam di Indonesia.</p>
+                <h3 className="text-xl font-bold mb-3">Lokasi Strategis</h3>
+                <p className="text-muted-foreground">Beroperasi di situs alam terbaik Aceh, mulai dari pesisir hingga hutan pegunungan.</p>
               </div>
               <div className="text-center group">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                   <Droplets className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Dampak Nyata</h3>
-                <p className="text-muted-foreground">Setiap sesi berkontribusi langsung pada inisiatif penanaman mangrove dan reboisasi kami.</p>
+                <h3 className="text-xl font-bold mb-3">Kolaborasi DLHK</h3>
+                <p className="text-muted-foreground">Bekerja sama dengan instansi terkait untuk menjamin kualitas materi dan dampak lingkungan.</p>
               </div>
             </div>
           </div>
@@ -108,7 +111,7 @@ export default function Home() {
             <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
               <div className="max-w-xl">
                 <h2 className="font-headline text-4xl font-bold text-primary mb-4">Program Unggulan</h2>
-                <p className="text-muted-foreground">Pengalaman yang disesuaikan untuk sekolah, tim korporat, dan komunitas.</p>
+                <p className="text-muted-foreground">Pengalaman yang disesuaikan untuk sekolah, instansi pemerintah, dan tim korporat.</p>
               </div>
               <Button asChild variant="link" className="text-primary font-bold group">
                 <Link href="/programs" className="flex items-center gap-2">
@@ -133,10 +136,10 @@ export default function Home() {
                     </div>
                     <CardContent className="p-8">
                       <item.icon className="h-10 w-10 text-primary mb-4" />
-                      <h3 className="text-2xl font-bold mb-3 font-headline">{item.title}</h3>
+                      <h3 className="text-2xl font-bold mb-3 font-headline h-16">{item.title}</h3>
                       <p className="text-muted-foreground mb-6 line-clamp-3 leading-relaxed">{item.desc}</p>
                       <Button asChild variant="outline" className="w-full rounded-xl border-primary text-primary hover:bg-primary hover:text-white">
-                        <Link href={`/programs/${idx}`}>Pelajari Lebih Lanjut</Link>
+                        <Link href={`/programs?cat=all`}>Pelajari Lebih Lanjut</Link>
                       </Button>
                     </CardContent>
                   </Card>
@@ -164,7 +167,7 @@ export default function Home() {
               </div>
               <div>
                 <div className="text-4xl md:text-5xl font-bold mb-2">45+</div>
-                <div className="text-primary-foreground/70 uppercase tracking-widest text-xs font-bold">Sekolah Mitra</div>
+                <div className="text-primary-foreground/70 uppercase tracking-widest text-xs font-bold">Mitra Instansi</div>
               </div>
             </div>
           </div>
@@ -179,11 +182,11 @@ export default function Home() {
               
               <h2 className="font-headline text-4xl md:text-5xl font-bold mb-6 text-accent-foreground">Siap memulai petualangan Anda?</h2>
               <p className="text-xl text-accent-foreground/80 mb-10 max-w-2xl mx-auto">
-                Bergabunglah dalam sesi luar ruangan kami berikutnya dan rasakan kekuatan penyembuhan alam secara langsung.
+                Bergabunglah dalam sesi pelatihan kami berikutnya dan rasakan transformasi melalui kekuatan alam Aceh.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
                 <Button asChild size="lg" className="bg-primary text-primary-foreground rounded-full px-10 h-14 text-lg">
-                  <Link href="/programs">Katalog Pemesanan</Link>
+                  <Link href="/programs">Katalog Program</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-accent-foreground/20 bg-white/10 text-accent-foreground rounded-full px-10 h-14 text-lg hover:bg-white/20">
                   <Link href="/contact">Hubungi Kami</Link>

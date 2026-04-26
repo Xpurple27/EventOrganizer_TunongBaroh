@@ -10,71 +10,98 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Trees, School, Building2, Droplet, Search } from "lucide-react";
+import { Trees, School, Building2, Droplet, Search, ClipboardCheck, Trash2, Users } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const categories = [
   { id: "all", name: "Semua Program", icon: null },
-  { id: "outdoor", name: "Pelatihan Outdoor", icon: Trees },
-  { id: "indoor", name: "Pelatihan Indoor", icon: Building2 },
-  { id: "school", name: "Sekolah Alam", icon: School },
-  { id: "impact", name: "Mangrove & Reboisasi", icon: Droplet },
+  { id: "management", name: "Manajemen & Kepemimpinan", icon: Users },
+  { id: "env-mgmt", name: "Pengelolaan Lingkungan", icon: ClipboardCheck },
+  { id: "conservation", name: "Konservasi & Kehutanan", icon: Trees },
+  { id: "education", name: "Pendidikan & Tim", icon: School },
 ];
 
 const programs = [
   {
     id: "1",
-    title: "Leadership Wilderness",
-    category: "outdoor",
+    title: "Pelatihan Manajemen",
+    category: "management",
     price: 1500000,
-    duration: "3 Hari, 2 Malam",
-    desc: "Pelatihan kepemimpinan intensif di lingkungan hutan dalam yang fokus pada dinamika kelompok dan keterampilan bertahan hidup.",
-    image: "outdoor-training"
-  },
-  {
-    id: "2",
-    title: "Junior Eco-Guardians",
-    category: "school",
-    price: 350000,
-    duration: "1 Hari (Kunjungan Lapangan)",
-    desc: "Kunjungan lapangan edukatif untuk siswa sekolah dasar untuk mempelajari ekosistem lokal dan keanekaragaman hayati.",
-    image: "nature-school"
-  },
-  {
-    id: "3",
-    title: "Eco-Corporate Retreat",
-    category: "indoor",
-    price: 2500000,
-    duration: "2 Hari, 1 Malam",
-    desc: "Retret mewah namun sadar lingkungan yang menggabungkan lokakarya strategis indoor dengan jalan santai di alam.",
+    duration: "2 Hari",
+    desc: "Optimalkan efisiensi organisasi Anda dengan prinsip manajemen modern yang adaptif.",
     image: "indoor-leadership"
   },
   {
+    id: "2",
+    title: "Pelatihan Kepemimpinan",
+    category: "management",
+    price: 2000000,
+    duration: "3 Hari",
+    desc: "Membangun karakter pemimpin yang tangguh, visioner, dan mampu menginspirasi tim.",
+    image: "outdoor-training"
+  },
+  {
+    id: "3",
+    title: "Pelatihan Pengelolaan Lingkungan Berbasis Praktik",
+    category: "env-mgmt",
+    price: 1200000,
+    duration: "2 Hari",
+    desc: "Implementasi langsung standar pengelolaan lingkungan untuk sektor industri dan komunitas.",
+    image: "gallery-1"
+  },
+  {
     id: "4",
-    title: "Konservasi Mangrove",
-    category: "impact",
-    price: 500000,
-    duration: "Setengah Hari",
-    desc: "Program aksi komunitas di mana peserta menanam bibit mangrove dan belajar tentang perlindungan pesisir.",
+    title: "Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir",
+    category: "conservation",
+    price: 850000,
+    duration: "1 Hari",
+    desc: "Teknik pembibitan, penanaman, dan perawatan ekosistem mangrove untuk perlindungan pantai.",
     image: "mangrove-planting"
   },
   {
     id: "5",
-    title: "Dasar Survival Pegunungan",
-    category: "outdoor",
-    price: 850000,
+    title: "Pelatihan Penghijauan & Urban Forestry",
+    category: "conservation",
+    price: 900000,
     duration: "2 Hari",
-    desc: "Keterampilan penting untuk penggemar outdoor: navigasi, menyalakan api, dan membangun tempat berteduh.",
+    desc: "Strategi pengembangan hutan kota dan ruang terbuka hijau di lingkungan padat penduduk.",
     image: "hero-nature"
   },
   {
     id: "6",
-    title: "Forest Academy Level 1",
-    category: "school",
-    price: 1200000,
-    duration: "Seri Akhir Pekan",
-    desc: "Pendidikan alam berbasis kurikulum untuk siswa SMA yang tertarik pada kehutanan dan konservasi.",
+    title: "Outdoor Leadership & Team Building (Lingkungan)",
+    category: "education",
+    price: 1800000,
+    duration: "3 Hari, 2 Malam",
+    desc: "Kolaborasi tim melalui tantangan fisik di alam yang mengasah kepedulian lingkungan.",
+    image: "gallery-2"
+  },
+  {
+    id: "7",
+    title: "Pelatihan Pengelolaan Sampah & Daur Ulang",
+    category: "env-mgmt",
+    price: 750000,
+    duration: "1 Hari",
+    desc: "Sistem manajemen limbah dari hulu ke hilir dengan pendekatan ekonomi sirkular.",
+    image: "nature-school"
+  },
+  {
+    id: "8",
+    title: "Pelatihan Monitoring & Evaluasi Lingkungan",
+    category: "env-mgmt",
+    price: 1350000,
+    duration: "2 Hari",
+    desc: "Pengukuran dampak lingkungan menggunakan instrumen ilmiah dan pelaporan berkala.",
     image: "gallery-1"
+  },
+  {
+    id: "9",
+    title: "Program Sekolah Alam (Kolaborasi DLHK)",
+    category: "education",
+    price: 500000,
+    duration: "1 Hari",
+    desc: "Edukasi dini bagi generasi muda tentang pentingnya menjaga kelestarian alam Aceh.",
+    image: "nature-school"
   }
 ];
 
@@ -97,7 +124,7 @@ export default function ProgramsPage() {
           <header className="mb-12">
             <h1 className="font-headline text-5xl font-bold text-primary mb-4">Katalog Program</h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Pilih dari berbagai pelatihan berbasis alam dan aktivitas pendidikan kami. Setiap pemesanan mendukung inisiatif lingkungan lokal kami.
+              Pilih dari berbagai pelatihan manajemen, lingkungan, dan pendidikan alam kami. Setiap program dirancang untuk memberikan dampak nyata bagi peserta dan bumi.
             </p>
           </header>
 
@@ -105,7 +132,7 @@ export default function ProgramsPage() {
             <div className="flex-grow relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
               <Input
-                placeholder="Cari program..."
+                placeholder="Cari pelatihan..."
                 className="pl-10 h-12 bg-white rounded-xl border-secondary"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -145,7 +172,7 @@ export default function ProgramsPage() {
                     </div>
                     <CardHeader className="pb-2">
                       <div className="flex justify-between items-start">
-                        <CardTitle className="font-headline text-2xl group-hover:text-primary transition-colors">{program.title}</CardTitle>
+                        <CardTitle className="font-headline text-xl h-14 line-clamp-2">{program.title}</CardTitle>
                       </div>
                       <p className="text-sm font-bold text-primary">{program.duration}</p>
                     </CardHeader>
@@ -160,7 +187,7 @@ export default function ProgramsPage() {
                         <span className="text-xs font-normal text-muted-foreground ml-1">/ orang</span>
                       </div>
                       <Button asChild size="sm" className="rounded-xl">
-                        <Link href={`/programs/${program.id}`}>Detail</Link>
+                        <Link href={`/booking?program=${program.id}`}>Pesan</Link>
                       </Button>
                     </CardFooter>
                   </Card>
