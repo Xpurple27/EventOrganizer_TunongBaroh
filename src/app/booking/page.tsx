@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, Suspense, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -66,7 +66,7 @@ const programsList = [
   { id: "14", name: "Pelatihan Selam (Diving)", min: 1 },
 ];
 
-function BookingFormContent() {
+function BookingFormInner() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const searchParams = useSearchParams();
   const initialProgramId = searchParams.get("program") || "";
@@ -84,6 +84,13 @@ function BookingFormContent() {
       notes: "",
     },
   });
+
+  // Update programId if URL param changes after initial load
+  useEffect(() => {
+    if (initialProgramId) {
+      form.setValue("programId", initialProgramId);
+    }
+  }, [initialProgramId, form]);
 
   const selectedProgramId = form.watch("programId");
   const selectedProgram = programsList.find(p => p.id === selectedProgramId);
@@ -180,7 +187,7 @@ function BookingFormContent() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Pilih Program *</FormLabel>
-                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <Select onValueChange={field.onChange} defaultValue={field.value} value={field.value}>
                       <FormControl>
                         <SelectTrigger className="rounded-xl">
                           <SelectValue placeholder="Pilih program" />
@@ -344,7 +351,7 @@ export default function BookingPage() {
             </div>
           </div>
         }>
-          <BookingFormContent />
+          <BookingFormInner />
         </Suspense>
       </main>
 
