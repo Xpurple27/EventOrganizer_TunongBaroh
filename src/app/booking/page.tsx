@@ -186,6 +186,11 @@ export default function BookingPage() {
                               <SelectItem value="7">Pelatihan Pengelolaan Sampah & Daur Ulang</SelectItem>
                               <SelectItem value="8">Pelatihan Monitoring & Evaluasi Lingkungan</SelectItem>
                               <SelectItem value="9">Program Sekolah Alam (Kolaborasi DLHK)</SelectItem>
+                              <SelectItem value="10">Pelatihan Budidaya Lebah</SelectItem>
+                              <SelectItem value="11">Konservasi Alam: Penanaman Terumbu Karang</SelectItem>
+                              <SelectItem value="12">Konservasi Alam: Penghijauan</SelectItem>
+                              <SelectItem value="13">Konservasi Alam: Penanaman Pohon</SelectItem>
+                              <SelectItem value="14">Pelatihan Selam (Diving)</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />

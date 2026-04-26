@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Trees, School, Building2, Droplet, Search, ClipboardCheck, Trash2, Users } from "lucide-react";
+import { Trees, School, Building2, Droplet, Search, ClipboardCheck, Trash2, Users, Waves, Bug } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const categories = [
@@ -18,7 +18,7 @@ const categories = [
   { id: "management", name: "Manajemen & Kepemimpinan", icon: Users },
   { id: "env-mgmt", name: "Pengelolaan Lingkungan", icon: ClipboardCheck },
   { id: "conservation", name: "Konservasi & Kehutanan", icon: Trees },
-  { id: "education", name: "Pendidikan & Tim", icon: School },
+  { id: "education", name: "Pendidikan & Keterampilan", icon: School },
 ];
 
 const programs = [
@@ -102,6 +102,51 @@ const programs = [
     duration: "1 Hari",
     desc: "Edukasi dini bagi generasi muda tentang pentingnya menjaga kelestarian alam Aceh.",
     image: "nature-school"
+  },
+  {
+    id: "10",
+    title: "Pelatihan Budidaya Lebah",
+    category: "env-mgmt",
+    price: 1100000,
+    duration: "2 Hari",
+    desc: "Belajar teknik budidaya lebah madu yang berkelanjutan untuk mendukung ekosistem dan ekonomi.",
+    image: "gallery-school-1"
+  },
+  {
+    id: "11",
+    title: "Konservasi Alam: Penanaman Terumbu Karang",
+    category: "conservation",
+    price: 1500000,
+    duration: "2 Hari",
+    desc: "Aksi nyata restorasi ekosistem bawah laut melalui teknik transplantasi terumbu karang.",
+    image: "gallery-rehab-1"
+  },
+  {
+    id: "12",
+    title: "Konservasi Alam: Penghijauan",
+    category: "conservation",
+    price: 800000,
+    duration: "1 Hari",
+    desc: "Program restorasi lahan kritis melalui penanaman vegetasi lokal untuk mengembalikan fungsi hutan.",
+    image: "gallery-1"
+  },
+  {
+    id: "13",
+    title: "Konservasi Alam: Penanaman Pohon",
+    category: "conservation",
+    price: 750000,
+    duration: "1 Hari",
+    desc: "Inisiatif penanaman pohon produktif dan pelindung untuk memperkuat daya dukung lingkungan.",
+    image: "hero-nature"
+  },
+  {
+    id: "14",
+    title: "Pelatihan Selam (Diving)",
+    category: "education",
+    price: 3500000,
+    duration: "4 Hari",
+    desc: "Kursus menyelam dasar hingga sertifikasi dengan fokus pada etika pengamatan bawah laut.",
+    image: "gallery-2"
   }
 ];
 
