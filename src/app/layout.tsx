@@ -4,7 +4,7 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'EcoCatalyst Hub - Tunong Baroh Outdoor Management',
-  description: 'Providing nature-based training, educational programs, and environmental initiatives.',
+  description: 'Menyediakan pelatihan berbasis alam, program pendidikan, dan inisiatif lingkungan di Aceh.',
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="id">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />

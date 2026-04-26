@@ -14,11 +14,11 @@ import { Trees, School, Building2, Droplet, Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 
 const categories = [
-  { id: "all", name: "All Programs", icon: null },
-  { id: "outdoor", name: "Outdoor Training", icon: Trees },
-  { id: "indoor", name: "Indoor Training", icon: Building2 },
-  { id: "school", name: "Nature School", icon: School },
-  { id: "impact", name: "Mangrove & Reforest", icon: Droplet },
+  { id: "all", name: "Semua Program", icon: null },
+  { id: "outdoor", name: "Pelatihan Outdoor", icon: Trees },
+  { id: "indoor", name: "Pelatihan Indoor", icon: Building2 },
+  { id: "school", name: "Sekolah Alam", icon: School },
+  { id: "impact", name: "Mangrove & Reboisasi", icon: Droplet },
 ];
 
 const programs = [
@@ -27,8 +27,8 @@ const programs = [
     title: "Leadership Wilderness",
     category: "outdoor",
     price: 1500000,
-    duration: "3 Days, 2 Nights",
-    desc: "Intensive leadership training in the deep forest environment focusing on group dynamics and survival skills.",
+    duration: "3 Hari, 2 Malam",
+    desc: "Pelatihan kepemimpinan intensif di lingkungan hutan dalam yang fokus pada dinamika kelompok dan keterampilan bertahan hidup.",
     image: "outdoor-training"
   },
   {
@@ -36,8 +36,8 @@ const programs = [
     title: "Junior Eco-Guardians",
     category: "school",
     price: 350000,
-    duration: "1 Day (Field Trip)",
-    desc: "Educational field trip for elementary students to learn about local ecosystem and biodiversity.",
+    duration: "1 Hari (Kunjungan Lapangan)",
+    desc: "Kunjungan lapangan edukatif untuk siswa sekolah dasar untuk mempelajari ekosistem lokal dan keanekaragaman hayati.",
     image: "nature-school"
   },
   {
@@ -45,26 +45,26 @@ const programs = [
     title: "Eco-Corporate Retreat",
     category: "indoor",
     price: 2500000,
-    duration: "2 Days, 1 Night",
-    desc: "A luxury but eco-conscious retreat combining indoor strategic workshops with light nature walks.",
+    duration: "2 Hari, 1 Malam",
+    desc: "Retret mewah namun sadar lingkungan yang menggabungkan lokakarya strategis indoor dengan jalan santai di alam.",
     image: "indoor-leadership"
   },
   {
     id: "4",
-    title: "Mangrove Conservation",
+    title: "Konservasi Mangrove",
     category: "impact",
     price: 500000,
-    duration: "Half Day",
-    desc: "Community action program where participants plant mangrove seedlings and learn about coastal protection.",
+    duration: "Setengah Hari",
+    desc: "Program aksi komunitas di mana peserta menanam bibit mangrove dan belajar tentang perlindungan pesisir.",
     image: "mangrove-planting"
   },
   {
     id: "5",
-    title: "Mountain Survival Basics",
+    title: "Dasar Survival Pegunungan",
     category: "outdoor",
     price: 850000,
-    duration: "2 Days",
-    desc: "Essential skills for outdoor enthusiasts: navigation, fire starting, and shelter building.",
+    duration: "2 Hari",
+    desc: "Keterampilan penting untuk penggemar outdoor: navigasi, menyalakan api, dan membangun tempat berteduh.",
     image: "hero-nature"
   },
   {
@@ -72,8 +72,8 @@ const programs = [
     title: "Forest Academy Level 1",
     category: "school",
     price: 1200000,
-    duration: "Weekend Series",
-    desc: "Curriculum-based nature education for high school students interested in forestry and conservation.",
+    duration: "Seri Akhir Pekan",
+    desc: "Pendidikan alam berbasis kurikulum untuk siswa SMA yang tertarik pada kehutanan dan konservasi.",
     image: "gallery-1"
   }
 ];
@@ -95,9 +95,9 @@ export default function ProgramsPage() {
       <main className="flex-grow py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <header className="mb-12">
-            <h1 className="font-headline text-5xl font-bold text-primary mb-4">Program Catalog</h1>
+            <h1 className="font-headline text-5xl font-bold text-primary mb-4">Katalog Program</h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Choose from our wide range of nature-based training and educational activities. Every booking supports our local environmental initiatives.
+              Pilih dari berbagai pelatihan berbasis alam dan aktivitas pendidikan kami. Setiap pemesanan mendukung inisiatif lingkungan lokal kami.
             </p>
           </header>
 
@@ -105,7 +105,7 @@ export default function ProgramsPage() {
             <div className="flex-grow relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground h-5 w-5" />
               <Input
-                placeholder="Search programs..."
+                placeholder="Cari program..."
                 className="pl-10 h-12 bg-white rounded-xl border-secondary"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -140,7 +140,7 @@ export default function ProgramsPage() {
                         className="object-cover"
                       />
                       <Badge className="absolute top-4 right-4 bg-accent text-accent-foreground capitalize border-none shadow-md">
-                        {program.category}
+                        {categories.find(c => c.id === program.category)?.name}
                       </Badge>
                     </div>
                     <CardHeader className="pb-2">
@@ -157,10 +157,10 @@ export default function ProgramsPage() {
                     <CardFooter className="pt-4 border-t border-secondary/30 flex justify-between items-center bg-secondary/10">
                       <div className="text-lg font-bold text-primary">
                         Rp {program.price.toLocaleString()}
-                        <span className="text-xs font-normal text-muted-foreground ml-1">/ person</span>
+                        <span className="text-xs font-normal text-muted-foreground ml-1">/ orang</span>
                       </div>
                       <Button asChild size="sm" className="rounded-xl">
-                        <Link href={`/programs/${program.id}`}>Details</Link>
+                        <Link href={`/programs/${program.id}`}>Detail</Link>
                       </Button>
                     </CardFooter>
                   </Card>
@@ -170,10 +170,10 @@ export default function ProgramsPage() {
           ) : (
             <div className="text-center py-20 bg-secondary/10 rounded-3xl border-2 border-dashed border-secondary">
               <Search className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-xl font-bold mb-2">No programs found</h3>
-              <p className="text-muted-foreground">Try adjusting your category or search query.</p>
+              <h3 className="text-xl font-bold mb-2">Program tidak ditemukan</h3>
+              <p className="text-muted-foreground">Coba sesuaikan kategori atau kata kunci pencarian Anda.</p>
               <Button onClick={() => {setActiveCategory("all"); setSearchQuery("");}} variant="link" className="mt-4 text-primary">
-                Clear all filters
+                Hapus semua filter
               </Button>
             </div>
           )}

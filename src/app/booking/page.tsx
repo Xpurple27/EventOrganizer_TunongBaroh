@@ -25,17 +25,18 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { id as localeId } from "date-fns/locale";
 import { CalendarIcon, CheckCircle2 } from "lucide-react";
 
 const bookingSchema = z.object({
-  institutionName: z.string().min(2, "Institution name is required"),
-  contactPerson: z.string().min(2, "Contact name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Valid phone number is required"),
-  participants: z.coerce.number().min(5, "Minimum 5 participants"),
-  programId: z.string().min(1, "Please select a program"),
+  institutionName: z.string().min(2, "Nama institusi wajib diisi"),
+  contactPerson: z.string().min(2, "Nama kontak wajib diisi"),
+  email: z.string().email("Alamat email tidak valid"),
+  phone: z.string().min(10, "Nomor telepon yang valid wajib diisi"),
+  participants: z.coerce.number().min(5, "Minimal 5 peserta"),
+  programId: z.string().min(1, "Silakan pilih program"),
   date: z.date({
-    required_error: "A date is required.",
+    required_error: "Tanggal wajib dipilih.",
   }),
   notes: z.string().optional(),
 });
@@ -69,12 +70,12 @@ export default function BookingPage() {
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="h-12 w-12 text-primary" />
             </div>
-            <h2 className="text-3xl font-headline font-bold mb-4">Booking Requested!</h2>
+            <h2 className="text-3xl font-headline font-bold mb-4">Pemesanan Diminta!</h2>
             <p className="text-muted-foreground mb-8">
-              Thank you for your interest. We've received your booking request for <strong>{form.getValues("institutionName")}</strong>. Our team will contact you within 24 hours to confirm the details.
+              Terima kasih atas minat Anda. Kami telah menerima permintaan pemesanan untuk <strong>{form.getValues("institutionName")}</strong>. Tim kami akan menghubungi Anda dalam 24 jam untuk mengonfirmasi detailnya.
             </p>
             <Button asChild className="w-full h-12 rounded-xl">
-              <a href="/">Back to Home</a>
+              <a href="/">Kembali ke Beranda</a>
             </Button>
           </Card>
         </main>
@@ -90,17 +91,17 @@ export default function BookingPage() {
       <main className="flex-grow py-16 px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="font-headline text-5xl font-bold text-primary mb-4">Plan Your Activity</h1>
+            <h1 className="font-headline text-5xl font-bold text-primary mb-4">Rencanakan Aktivitas Anda</h1>
             <p className="text-muted-foreground text-lg">
-              Fill out the form below to request a booking for your school or organization.
+              Isi formulir di bawah ini untuk meminta pemesanan bagi sekolah atau organisasi Anda.
             </p>
           </div>
 
           <Card className="border-none shadow-2xl rounded-3xl overflow-hidden">
             <CardHeader className="bg-primary text-primary-foreground p-10">
-              <CardTitle className="text-3xl font-headline">Booking Form</CardTitle>
+              <CardTitle className="text-3xl font-headline">Formulir Pemesanan</CardTitle>
               <CardDescription className="text-primary-foreground/80 text-lg">
-                Required fields are marked with an asterisk.
+                Bidang yang wajib diisi ditandai dengan tanda bintang.
               </CardDescription>
             </CardHeader>
             <CardContent className="p-10 bg-white">
@@ -112,7 +113,7 @@ export default function BookingPage() {
                       name="institutionName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Institution / School Name *</FormLabel>
+                          <FormLabel>Nama Institusi / Sekolah *</FormLabel>
                           <FormControl>
                             <Input placeholder="SMA Negeri 1 Aceh" {...field} className="rounded-xl" />
                           </FormControl>
@@ -125,7 +126,7 @@ export default function BookingPage() {
                       name="contactPerson"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Contact Person *</FormLabel>
+                          <FormLabel>Nama Kontak *</FormLabel>
                           <FormControl>
                             <Input placeholder="Budi Santoso" {...field} className="rounded-xl" />
                           </FormControl>
@@ -138,7 +139,7 @@ export default function BookingPage() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email Address *</FormLabel>
+                          <FormLabel>Alamat Email *</FormLabel>
                           <FormControl>
                             <Input placeholder="budi@school.id" {...field} className="rounded-xl" />
                           </FormControl>
@@ -151,7 +152,7 @@ export default function BookingPage() {
                       name="phone"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Phone Number *</FormLabel>
+                          <FormLabel>Nomor Telepon *</FormLabel>
                           <FormControl>
                             <Input placeholder="+62 812..." {...field} className="rounded-xl" />
                           </FormControl>
@@ -164,18 +165,18 @@ export default function BookingPage() {
                       name="programId"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Select Program *</FormLabel>
+                          <FormLabel>Pilih Program *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger className="rounded-xl">
-                                <SelectValue placeholder="Select a program" />
+                                <SelectValue placeholder="Pilih program" />
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
                               <SelectItem value="leadership">Leadership Wilderness</SelectItem>
                               <SelectItem value="junior">Junior Eco-Guardians</SelectItem>
                               <SelectItem value="retreat">Eco-Corporate Retreat</SelectItem>
-                              <SelectItem value="mangrove">Mangrove Conservation</SelectItem>
+                              <SelectItem value="mangrove">Konservasi Mangrove</SelectItem>
                             </SelectContent>
                           </Select>
                           <FormMessage />
@@ -187,11 +188,11 @@ export default function BookingPage() {
                       name="participants"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Estimated Participants *</FormLabel>
+                          <FormLabel>Estimasi Peserta *</FormLabel>
                           <FormControl>
                             <Input type="number" {...field} className="rounded-xl" />
                           </FormControl>
-                          <FormDescription>Min. 5 participants</FormDescription>
+                          <FormDescription>Min. 5 peserta</FormDescription>
                           <FormMessage />
                         </FormItem>
                       )}
@@ -201,7 +202,7 @@ export default function BookingPage() {
                       name="date"
                       render={({ field }) => (
                         <FormItem className="flex flex-col">
-                          <FormLabel>Preferred Date *</FormLabel>
+                          <FormLabel>Tanggal Pilihan *</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
                               <FormControl>
@@ -213,9 +214,9 @@ export default function BookingPage() {
                                   )}
                                 >
                                   {field.value ? (
-                                    format(field.value, "PPP")
+                                    format(field.value, "PPP", { locale: localeId })
                                   ) : (
-                                    <span>Pick a date</span>
+                                    <span>Pilih tanggal</span>
                                   )}
                                   <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                 </Button>
@@ -244,10 +245,10 @@ export default function BookingPage() {
                     name="notes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Additional Requests / Notes</FormLabel>
+                        <FormLabel>Permintaan Tambahan / Catatan</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Tell us about special requirements, food allergies, or specific goals for this session." 
+                            placeholder="Beri tahu kami tentang persyaratan khusus, alergi makanan, atau tujuan spesifik untuk sesi ini." 
                             className="min-h-[120px] rounded-xl"
                             {...field} 
                           />
@@ -258,7 +259,7 @@ export default function BookingPage() {
                   />
 
                   <Button type="submit" size="lg" className="w-full bg-primary text-primary-foreground h-14 rounded-2xl text-lg font-bold shadow-lg hover:shadow-xl transition-all">
-                    Submit Booking Request
+                    Kirim Permintaan Pemesanan
                   </Button>
                 </form>
               </Form>
