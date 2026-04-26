@@ -4,9 +4,9 @@ Proyek ini adalah platform manajemen acara dan katalog program untuk Tunong Baro
 
 ## Langkah Migrasi ke GitHub
 
-**PENTING:** Sebelum memulai, pastikan Anda sudah membuat repositori kosong di akun GitHub Anda dengan nama `EcoCatalyst_TunongBaroh_Event_Organizer`.
+**PENTING:** Gunakan instruksi di bawah ini setelah Anda mengklik "Create Repository" di GitHub dengan nama `EventOrganizer_TunongBaroh`.
 
-Jika Anda melihat pesan **"nothing to commit, working tree clean"** di terminal, itu artinya file Anda sudah tersimpan di database lokal Git. Anda bisa langsung melompat ke langkah nomor 5.
+Jika Anda melihat pesan **"nothing to commit, working tree clean"** di terminal pada langkah 3, itu artinya file Anda sudah tersimpan. Langsung lompat ke langkah nomor 5.
 
 ### Urutan Perintah Lengkap:
 
@@ -24,7 +24,6 @@ Jika Anda melihat pesan **"nothing to commit, working tree clean"** di terminal,
     ```bash
     git commit -m "Initial commit: Tunong Baroh Hub"
     ```
-    *Jika muncul pesan "nothing to commit", lanjut saja ke langkah berikutnya.*
 
 4.  **Atur Branch Utama:**
     ```bash
@@ -32,9 +31,9 @@ Jika Anda melihat pesan **"nothing to commit, working tree clean"** di terminal,
     ```
 
 5.  **Hubungkan ke GitHub:**
-    *(Pastikan Anda sudah membuat repo di website GitHub terlebih dahulu)*
+    *(Pastikan Anda sudah klik "Create Repository" di website GitHub)*
     ```bash
-    git remote add origin https://github.com/Xpurple27/EcoCatalyst_TunongBaroh_Event_Organizer.git
+    git remote add origin https://github.com/Xpurple27/EventOrganizer_TunongBaroh.git
     ```
     *Jika muncul error "remote origin already exists", ketik: `git remote remove origin` lalu ulangi perintah di atas.*
 
