@@ -35,7 +35,7 @@ const programs = [
   },
   {
     id: "4",
-    title: "Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir",
+    title: "Penanaman Mangrove & Rehabilitasi Pesisir",
     category: "conservation",
     priceRange: "Kemitraan",
     minPeople: null,

@@ -56,7 +56,7 @@ const bookingSchema = z.object({
 
 const programsList = [
   { id: "3", name: "Pelatihan Pengelolaan Lingkungan Berbasis Praktik", min: 30, tiered: true },
-  { id: "4", name: "Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir", min: 1, partnership: true },
+  { id: "4", name: "Penanaman Mangrove & Rehabilitasi Pesisir", min: 1, partnership: true },
   { id: "5", name: "Penanaman 1000 Pohon", min: 1, partnership: true },
   { id: "6", name: "Outdoor Leadership & Team Building", min: 30, tiered: true },
   { id: "7", name: "Pelatihan Pengelolaan Sampah & Daur Ulang", min: 30, tiered: true },
