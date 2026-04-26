@@ -6,28 +6,28 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ArrowRight, Trees, BookOpen, Users, Droplets, ClipboardCheck } from "lucide-react";
+import { ArrowRight, Trees, BookOpen, Users, Droplets, ClipboardCheck, Award } from "lucide-react";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-nature");
   const highlights = [
     {
       title: "Kepemimpinan & Kerja Tim",
-      desc: "Kolaborasi tim melalui tantangan fisik di alam yang mengasah kepedulian lingkungan dan jiwa kepemimpinan.",
+      desc: "Program Outdoor Leadership yang mengasah jiwa kepemimpinan dan kolaborasi melalui tantangan di alam terbuka.",
       icon: Users,
       image: "gallery-2",
       id: "6"
     },
     {
-      title: "Konservasi & Rehabilitasi",
-      desc: "Aksi nyata rehabilitasi pesisir dan penanaman mangrove untuk menjaga garis pantai Aceh.",
-      icon: Droplets,
-      image: "mangrove-planting",
-      id: "4"
+      title: "Penanaman 1000 Pohon",
+      desc: "Inisiatif restorasi skala besar melalui kolaborasi strategis dengan berbagai organisasi dan instansi pemerintah.",
+      icon: Trees,
+      image: "hero-nature",
+      id: "5"
     },
     {
       title: "Pengelolaan Lingkungan",
-      desc: "Pelatihan praktik pengelolaan limbah dan monitoring lingkungan yang berkelanjutan.",
+      desc: "Pelatihan praktik langsung untuk pengelolaan limbah dan standar lingkungan yang berkelanjutan.",
       icon: ClipboardCheck,
       image: "gallery-1",
       id: "3"
@@ -82,24 +82,24 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
               <div className="text-center group">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
-                  <Users className="h-8 w-8 text-primary" />
+                  <Award className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Fasilitator Ahli</h3>
-                <p className="text-muted-foreground">Tim profesional bersertifikat dalam manajemen outdoor dan pelestarian lingkungan.</p>
+                <h3 className="text-xl font-bold mb-3">Sertifikasi & Kualitas</h3>
+                <p className="text-muted-foreground">Materi pelatihan yang disusun secara profesional sesuai standar pengelolaan lingkungan terkini.</p>
               </div>
               <div className="text-center group">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                   <Trees className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Lokasi Strategis</h3>
-                <p className="text-muted-foreground">Beroperasi di situs alam terbaik Aceh, mulai dari pesisir hingga hutan pegunungan.</p>
+                <h3 className="text-xl font-bold mb-3">Ekosistem Beragam</h3>
+                <p className="text-muted-foreground">Beroperasi di situs alam terbaik Aceh, mulai dari pesisir hingga pegunungan.</p>
               </div>
               <div className="text-center group">
                 <div className="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-primary/20 transition-colors">
                   <Droplets className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold mb-3">Kolaborasi DLHK</h3>
-                <p className="text-muted-foreground">Bekerja sama dengan instansi terkait untuk menjamin kualitas materi dan dampak lingkungan.</p>
+                <h3 className="text-xl font-bold mb-3">Dampak Nyata</h3>
+                <p className="text-muted-foreground">Bekerja sama dengan DLHK untuk menjamin keberlanjutan dampak lingkungan dari setiap program.</p>
               </div>
             </div>
           </div>
@@ -189,7 +189,7 @@ export default function Home() {
                   <Link href="/programs">Katalog Program</Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-accent-foreground/20 bg-white/10 text-accent-foreground rounded-full px-10 h-14 text-lg hover:bg-white/20">
-                  <Link href="/contact">Hubungi Kami</Link>
+                  <Link href="/impact">Dampak Lingkungan</Link>
                 </Button>
               </div>
             </div>

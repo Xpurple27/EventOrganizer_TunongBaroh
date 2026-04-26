@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -26,21 +26,47 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { id as localeId } from "date-fns/locale";
-import { CalendarIcon, CheckCircle2 } from "lucide-react";
+import { CalendarIcon, CheckCircle2, Info } from "lucide-react";
 import { useSearchParams } from "next/navigation";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 const bookingSchema = z.object({
   institutionName: z.string().min(2, "Nama institusi wajib diisi"),
   contactPerson: z.string().min(2, "Nama kontak wajib diisi"),
   email: z.string().email("Alamat email tidak valid"),
   phone: z.string().min(10, "Nomor telepon yang valid wajib diisi"),
-  participants: z.coerce.number().min(5, "Minimal 5 peserta"),
+  participants: z.coerce.number(),
   programId: z.string().min(1, "Silakan pilih program"),
+  ageGroup: z.string().optional(),
   date: z.date({
     required_error: "Tanggal wajib dipilih.",
   }),
   notes: z.string().optional(),
+}).refine((data) => {
+  // Programs with 30 min participants
+  const tieredPrograms = ["3", "6", "7"];
+  if (tieredPrograms.includes(data.programId) && data.participants < 30) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Minimal 30 peserta untuk program ini",
+  path: ["participants"],
 });
+
+const programsList = [
+  { id: "3", name: "Pelatihan Pengelolaan Lingkungan Berbasis Praktik", min: 30, tiered: true },
+  { id: "4", name: "Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir", min: 1, partnership: true },
+  { id: "5", name: "Penanaman 1000 Pohon", min: 1, partnership: true },
+  { id: "6", name: "Outdoor Leadership & Team Building", min: 30, tiered: true },
+  { id: "7", name: "Pelatihan Pengelolaan Sampah & Daur Ulang", min: 30, tiered: true },
+  { id: "9", name: "Program Sekolah Alam (Kolaborasi DLHK)", min: 1 },
+  { id: "10", name: "Pelatihan Budidaya Lebah", min: 1 },
+  { id: "11", name: "Konservasi Alam: Penanaman Terumbu Karang", min: 1 },
+  { id: "12", name: "Konservasi Alam: Penghijauan", min: 1 },
+  { id: "13", name: "Konservasi Alam: Penanaman Pohon", min: 1 },
+  { id: "14", name: "Pelatihan Selam (Diving)", min: 1 },
+];
 
 export default function BookingPage() {
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -54,11 +80,15 @@ export default function BookingPage() {
       contactPerson: "",
       email: "",
       phone: "",
-      participants: 10,
+      participants: 30,
       programId: initialProgramId,
+      ageGroup: "SD",
       notes: "",
     },
   });
+
+  const selectedProgramId = form.watch("programId");
+  const selectedProgram = programsList.find(p => p.id === selectedProgramId);
 
   function onSubmit(values: z.infer<typeof bookingSchema>) {
     console.log(values);
@@ -74,9 +104,9 @@ export default function BookingPage() {
             <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-6">
               <CheckCircle2 className="h-12 w-12 text-primary" />
             </div>
-            <h2 className="text-3xl font-headline font-bold mb-4">Pemesanan Diminta!</h2>
+            <h2 className="text-3xl font-headline font-bold mb-4">Permintaan Terkirim!</h2>
             <p className="text-muted-foreground mb-8">
-              Terima kasih atas minat Anda. Kami telah menerima permintaan pemesanan untuk <strong>{form.getValues("institutionName")}</strong>. Tim kami akan menghubungi Anda dalam 24 jam untuk mengonfirmasi detailnya.
+              Terima kasih. Kami telah menerima permintaan untuk <strong>{form.getValues("institutionName")}</strong>. Tim kami akan segera menghubungi Anda.
             </p>
             <Button asChild className="w-full h-12 rounded-xl">
               <a href="/">Kembali ke Beranda</a>
@@ -97,7 +127,7 @@ export default function BookingPage() {
           <div className="text-center mb-12">
             <h1 className="font-headline text-5xl font-bold text-primary mb-4">Rencanakan Aktivitas Anda</h1>
             <p className="text-muted-foreground text-lg">
-              Isi formulir di bawah ini untuk meminta pemesanan bagi sekolah, instansi, atau organisasi Anda.
+              Isi formulir untuk pemesanan sekolah, instansi, atau organisasi Anda.
             </p>
           </div>
 
@@ -105,7 +135,7 @@ export default function BookingPage() {
             <CardHeader className="bg-primary text-primary-foreground p-10">
               <CardTitle className="text-3xl font-headline">Formulir Pemesanan</CardTitle>
               <CardDescription className="text-primary-foreground/80 text-lg">
-                Bidang yang wajib diisi ditandai dengan tanda bintang.
+                Silakan lengkapi detail rencana kegiatan Anda.
               </CardDescription>
             </CardHeader>
             <CardContent className="p-10 bg-white">
@@ -117,9 +147,9 @@ export default function BookingPage() {
                       name="institutionName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Nama Institusi / Sekolah *</FormLabel>
+                          <FormLabel>Nama Institusi / Sekolah / Organisasi *</FormLabel>
                           <FormControl>
-                            <Input placeholder="Contoh: SMA Negeri 1 Banda Aceh" {...field} className="rounded-xl" />
+                            <Input placeholder="Nama instansi Anda" {...field} className="rounded-xl" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -132,7 +162,7 @@ export default function BookingPage() {
                         <FormItem>
                           <FormLabel>Nama Kontak Person *</FormLabel>
                           <FormControl>
-                            <Input placeholder="Nama lengkap Anda" {...field} className="rounded-xl" />
+                            <Input placeholder="Nama lengkap" {...field} className="rounded-xl" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -158,7 +188,7 @@ export default function BookingPage() {
                         <FormItem>
                           <FormLabel>Nomor WhatsApp/Telepon *</FormLabel>
                           <FormControl>
-                            <Input placeholder="0812..." {...field} className="rounded-xl" />
+                            <Input placeholder="08..." {...field} className="rounded-xl" />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -169,7 +199,7 @@ export default function BookingPage() {
                       name="programId"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Pilih Program Pelatihan *</FormLabel>
+                          <FormLabel>Pilih Program *</FormLabel>
                           <Select onValueChange={field.onChange} defaultValue={field.value}>
                             <FormControl>
                               <SelectTrigger className="rounded-xl">
@@ -177,44 +207,66 @@ export default function BookingPage() {
                               </SelectTrigger>
                             </FormControl>
                             <SelectContent>
-                              <SelectItem value="3">Pelatihan Pengelolaan Lingkungan Berbasis Praktik</SelectItem>
-                              <SelectItem value="4">Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir</SelectItem>
-                              <SelectItem value="5">Pelatihan Penghijauan & Urban Forestry</SelectItem>
-                              <SelectItem value="6">Outdoor Leadership & Team Building</SelectItem>
-                              <SelectItem value="7">Pelatihan Pengelolaan Sampah & Daur Ulang</SelectItem>
-                              <SelectItem value="8">Pelatihan Monitoring & Evaluasi Lingkungan</SelectItem>
-                              <SelectItem value="9">Program Sekolah Alam (Kolaborasi DLHK)</SelectItem>
-                              <SelectItem value="10">Pelatihan Budidaya Lebah</SelectItem>
-                              <SelectItem value="11">Konservasi Alam: Penanaman Terumbu Karang</SelectItem>
-                              <SelectItem value="12">Konservasi Alam: Penghijauan</SelectItem>
-                              <SelectItem value="13">Konservasi Alam: Penanaman Pohon</SelectItem>
-                              <SelectItem value="14">Pelatihan Selam (Diving)</SelectItem>
+                              {programsList.map((p) => (
+                                <SelectItem key={p.id} value={p.id}>{p.name}</SelectItem>
+                              ))}
                             </SelectContent>
                           </Select>
                           <FormMessage />
                         </FormItem>
                       )}
                     />
+                    
+                    {selectedProgram?.tiered && (
+                      <FormField
+                        control={form.control}
+                        name="ageGroup"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Kelompok Usia *</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                              <FormControl>
+                                <SelectTrigger className="rounded-xl">
+                                  <SelectValue placeholder="Pilih kelompok usia" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="SD">SD (6-12th) - Rp 35rb/orang</SelectItem>
+                                <SelectItem value="SMP">SMP (12-15th) - Rp 50rb/orang</SelectItem>
+                                <SelectItem value="SMA">SMA (15-18th) - Rp 70rb/orang</SelectItem>
+                                <SelectItem value="Mahasiswa">Mahasiswa (18-25th) - Rp 150rb/orang</SelectItem>
+                                <SelectItem value="Dewasa">Dewasa - Rp 200rb/orang</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    )}
+
                     <FormField
                       control={form.control}
                       name="participants"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Estimasi Jumlah Peserta *</FormLabel>
+                          <FormLabel>Jumlah Peserta *</FormLabel>
                           <FormControl>
                             <Input type="number" {...field} className="rounded-xl" />
                           </FormControl>
-                          <FormDescription>Minimal 5 peserta</FormDescription>
+                          {selectedProgram?.min && (
+                            <FormDescription>Minimal {selectedProgram.min} orang</FormDescription>
+                          )}
                           <FormMessage />
                         </FormItem>
                       )}
                     />
+                    
                     <FormField
                       control={form.control}
                       name="date"
                       render={({ field }) => (
                         <FormItem className="flex flex-col">
-                          <FormLabel>Rencana Tanggal Pelaksanaan *</FormLabel>
+                          <FormLabel>Rencana Tanggal *</FormLabel>
                           <Popover>
                             <PopoverTrigger asChild>
                               <FormControl>
@@ -240,7 +292,7 @@ export default function BookingPage() {
                                 selected={field.value}
                                 onSelect={field.onChange}
                                 disabled={(date) =>
-                                  date < new Date() || date < new Date("1900-01-01")
+                                  date < new Date()
                                 }
                                 initialFocus
                                 locale={localeId}
@@ -253,15 +305,25 @@ export default function BookingPage() {
                     />
                   </div>
 
+                  {selectedProgram?.partnership && (
+                    <Alert className="bg-accent/10 border-accent/20">
+                      <Info className="h-4 w-4 text-primary" />
+                      <AlertTitle className="text-primary font-bold">Informasi Kemitraan</AlertTitle>
+                      <AlertDescription className="text-sm">
+                        Program ini merupakan bentuk kerja sama khusus. Kami akan menghubungi Anda untuk mendiskusikan detail proposal dan bentuk kolaborasi dengan organisasi/pemerintahan Anda.
+                      </AlertDescription>
+                    </Alert>
+                  )}
+
                   <FormField
                     control={form.control}
                     name="notes"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Permintaan Tambahan / Catatan Spesifik</FormLabel>
+                        <FormLabel>Catatan Tambahan</FormLabel>
                         <FormControl>
                           <Textarea 
-                            placeholder="Tuliskan jika ada kebutuhan khusus, alergi makanan, atau fokus materi tertentu yang Anda inginkan." 
+                            placeholder="Kebutuhan khusus atau fokus materi tertentu." 
                             className="min-h-[120px] rounded-xl"
                             {...field} 
                           />

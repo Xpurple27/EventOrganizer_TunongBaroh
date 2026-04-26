@@ -10,8 +10,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Trees, School, Building2, Droplet, Search, ClipboardCheck, Trash2, Users, Waves, Bug } from "lucide-react";
+import { Trees, School, Building2, Droplet, Search, ClipboardCheck, Trash2, Users, Waves, Bug, Info } from "lucide-react";
 import { Input } from "@/components/ui/input";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const categories = [
   { id: "all", name: "Semua Program", icon: null },
@@ -25,79 +26,83 @@ const programs = [
     id: "3",
     title: "Pelatihan Pengelolaan Lingkungan Berbasis Praktik",
     category: "env-mgmt",
-    price: 1200000,
+    priceRange: "Rp 35rb - 200rb",
+    minPeople: 30,
     duration: "2 Hari",
-    desc: "Implementasi langsung standar pengelolaan lingkungan untuk sektor industri dan komunitas.",
-    image: "gallery-1"
+    desc: "Implementasi langsung standar pengelolaan lingkungan. Harga bervariasi sesuai kelompok usia (SD/SMP/SMA/Mahasiswa/Dewasa).",
+    image: "gallery-1",
+    isTiered: true
   },
   {
     id: "4",
     title: "Pelatihan Penanaman Mangrove & Rehabilitasi Pesisir",
     category: "conservation",
-    price: 850000,
+    priceRange: "Kemitraan",
+    minPeople: null,
     duration: "1 Hari",
-    desc: "Teknik pembibitan, penanaman, dan perawatan ekosistem mangrove untuk perlindungan pantai.",
-    image: "mangrove-planting"
+    desc: "Program kerja sama khusus dengan organisasi, pemerintahan negeri, maupun swasta.",
+    image: "mangrove-planting",
+    isPartnership: true
   },
   {
     id: "5",
-    title: "Pelatihan Penghijauan & Urban Forestry",
+    title: "Penanaman 1000 Pohon",
     category: "conservation",
-    price: 900000,
-    duration: "2 Hari",
-    desc: "Strategi pengembangan hutan kota dan ruang terbuka hijau di lingkungan padat penduduk.",
-    image: "hero-nature"
+    priceRange: "Kemitraan",
+    minPeople: null,
+    duration: "Fleksibel",
+    desc: "Inisiatif restorasi skala besar melalui kerja sama dengan organisasi dan pemerintahan negeri/swasta.",
+    image: "hero-nature",
+    isPartnership: true
   },
   {
     id: "6",
     title: "Outdoor Leadership & Team Building",
     category: "education",
-    price: 1800000,
+    priceRange: "Rp 35rb - 200rb",
+    minPeople: 30,
     duration: "3 Hari, 2 Malam",
-    desc: "Kolaborasi tim melalui tantangan fisik di alam yang mengasah kepedulian lingkungan.",
-    image: "gallery-2"
+    desc: "Kolaborasi tim melalui tantangan fisik. Harga bervariasi sesuai kelompok usia (SD/SMP/SMA/Mahasiswa/Dewasa).",
+    image: "gallery-2",
+    isTiered: true
   },
   {
     id: "7",
     title: "Pelatihan Pengelolaan Sampah & Daur Ulang",
     category: "env-mgmt",
-    price: 750000,
+    priceRange: "Rp 35rb - 200rb",
+    minPeople: 30,
     duration: "1 Hari",
-    desc: "Sistem manajemen limbah dari hulu ke hilir dengan pendekatan ekonomi sirkular.",
-    image: "nature-school"
-  },
-  {
-    id: "8",
-    title: "Pelatihan Monitoring & Evaluasi Lingkungan",
-    category: "env-mgmt",
-    price: 1350000,
-    duration: "2 Hari",
-    desc: "Pengukuran dampak lingkungan menggunakan instrumen ilmiah dan pelaporan berkala.",
-    image: "gallery-1"
+    desc: "Sistem manajemen limbah hulu ke hilir. Harga bervariasi sesuai kelompok usia (SD/SMP/SMA/Mahasiswa/Dewasa).",
+    image: "nature-school",
+    isTiered: true
   },
   {
     id: "9",
     title: "Program Sekolah Alam (Kolaborasi DLHK)",
     category: "education",
-    price: 500000,
+    priceRange: "Rp 500.000",
+    minPeople: null,
     duration: "1 Hari",
     desc: "Edukasi dini bagi generasi muda tentang pentingnya menjaga kelestarian alam Aceh.",
-    image: "nature-school"
+    image: "gallery-school-1"
   },
   {
     id: "10",
     title: "Pelatihan Budidaya Lebah",
     category: "env-mgmt",
-    price: 1100000,
+    priceRange: "Rp 3.000.000",
+    minPeople: null,
     duration: "2 Hari",
-    desc: "Belajar teknik budidaya lebah madu yang berkelanjutan untuk mendukung ekosistem dan ekonomi.",
+    desc: "Belajar teknik budidaya lebah madu yang berkelanjutan untuk ekosistem dan ekonomi.",
     image: "gallery-school-1"
   },
   {
     id: "11",
     title: "Konservasi Alam: Penanaman Terumbu Karang",
     category: "conservation",
-    price: 1500000,
+    priceRange: "Rp 1.500.000",
+    minPeople: null,
     duration: "2 Hari",
     desc: "Aksi nyata restorasi ekosistem bawah laut melalui teknik transplantasi terumbu karang.",
     image: "gallery-rehab-1"
@@ -106,25 +111,28 @@ const programs = [
     id: "12",
     title: "Konservasi Alam: Penghijauan",
     category: "conservation",
-    price: 800000,
+    priceRange: "Rp 800.000",
+    minPeople: null,
     duration: "1 Hari",
-    desc: "Program restorasi lahan kritis melalui penanaman vegetasi lokal untuk mengembalikan fungsi hutan.",
+    desc: "Program restorasi lahan kritis melalui penanaman vegetasi lokal.",
     image: "gallery-1"
   },
   {
     id: "13",
     title: "Konservasi Alam: Penanaman Pohon",
     category: "conservation",
-    price: 750000,
+    priceRange: "Rp 750.000",
+    minPeople: null,
     duration: "1 Hari",
-    desc: "Inisiatif penanaman pohon produktif dan pelindung untuk memperkuat daya dukung lingkungan.",
+    desc: "Inisiatif penanaman pohon produktif dan pelindung untuk daya dukung lingkungan.",
     image: "hero-nature"
   },
   {
     id: "14",
     title: "Pelatihan Selam (Diving)",
     category: "education",
-    price: 3500000,
+    priceRange: "Rp 3.500.000",
+    minPeople: null,
     duration: "4 Hari",
     desc: "Kursus menyelam dasar hingga sertifikasi dengan fokus pada etika pengamatan bawah laut.",
     image: "gallery-2"
@@ -150,7 +158,7 @@ export default function ProgramsPage() {
           <header className="mb-12">
             <h1 className="font-headline text-5xl font-bold text-primary mb-4">Katalog Program</h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Pilih dari berbagai pelatihan lingkungan, konservasi, dan pendidikan alam kami. Setiap program dirancang untuk memberikan dampak nyata bagi peserta dan bumi.
+              Pilih dari berbagai pelatihan lingkungan, konservasi, dan pendidikan alam kami. Setiap program dirancang untuk memberikan dampak nyata.
             </p>
           </header>
 
@@ -200,7 +208,14 @@ export default function ProgramsPage() {
                       <div className="flex justify-between items-start">
                         <CardTitle className="font-headline text-xl h-14 line-clamp-2">{program.title}</CardTitle>
                       </div>
-                      <p className="text-sm font-bold text-primary">{program.duration}</p>
+                      <div className="flex items-center gap-2 mt-2">
+                        <p className="text-sm font-bold text-primary">{program.duration}</p>
+                        {program.minPeople && (
+                          <Badge variant="outline" className="text-[10px] text-muted-foreground border-muted-foreground">
+                            Min {program.minPeople} orang
+                          </Badge>
+                        )}
+                      </div>
                     </CardHeader>
                     <CardContent className="flex-grow">
                       <p className="text-muted-foreground text-sm line-clamp-3 leading-relaxed">
@@ -208,13 +223,42 @@ export default function ProgramsPage() {
                       </p>
                     </CardContent>
                     <CardFooter className="pt-4 border-t border-secondary/30 flex justify-between items-center bg-secondary/10">
-                      <div className="text-lg font-bold text-primary">
-                        Rp {program.price.toLocaleString()}
-                        <span className="text-xs font-normal text-muted-foreground ml-1">/ orang</span>
+                      <div className="flex flex-col">
+                        <div className="text-lg font-bold text-primary">
+                          {program.priceRange}
+                        </div>
+                        {!program.isPartnership && (
+                          <span className="text-[10px] text-muted-foreground">/ orang</span>
+                        )}
                       </div>
-                      <Button asChild size="sm" className="rounded-xl">
-                        <Link href={`/booking?program=${program.id}`}>Pesan</Link>
-                      </Button>
+                      <div className="flex gap-2">
+                        {program.isTiered && (
+                          <TooltipProvider>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <Button variant="ghost" size="icon" className="h-8 w-8 text-primary">
+                                  <Info className="h-4 w-4" />
+                                </Button>
+                              </TooltipTrigger>
+                              <TooltipContent className="bg-white p-4 rounded-xl shadow-xl border">
+                                <p className="font-bold mb-2">Biaya Kelompok Usia:</p>
+                                <ul className="text-xs space-y-1">
+                                  <li>SD (6-12th): Rp 35.000</li>
+                                  <li>SMP (12-15th): Rp 50.000</li>
+                                  <li>SMA (15-18th): Rp 70.000</li>
+                                  <li>Mahasiswa (18-25th): Rp 150.000</li>
+                                  <li>Dewasa: Rp 200.000</li>
+                                </ul>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
+                        )}
+                        <Button asChild size="sm" className="rounded-xl">
+                          <Link href={`/booking?program=${program.id}`}>
+                            {program.isPartnership ? "Hubungi" : "Pesan"}
+                          </Link>
+                        </Button>
+                      </div>
                     </CardFooter>
                   </Card>
                 );
