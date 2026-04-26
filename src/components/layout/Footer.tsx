@@ -57,9 +57,14 @@ export function Footer() {
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary shrink-0" />
-                <a href="https://wa.me/6281360911234" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
-                  +62 813-6091-1234 (Awaludin)
-                </a>
+                <div className="flex flex-col">
+                  <a href="https://wa.me/6281360911234" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                    +62 813-6091-1234 (Awaludin)
+                  </a>
+                  <a href="https://wa.me/6282361003219" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                    +62 823-6100-3219 (Dedek)
+                  </a>
+                </div>
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary shrink-0" />
