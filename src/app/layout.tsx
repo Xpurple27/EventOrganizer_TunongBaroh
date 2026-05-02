@@ -3,7 +3,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'EcoCatalyst Hub - Tunong Baroh Outdoor Management',
+  title: 'Tunong Baroh Outdoor Management',
   description: 'Menyediakan pelatihan berbasis alam, program pendidikan, dan inisiatif lingkungan di Aceh.',
 };
 
