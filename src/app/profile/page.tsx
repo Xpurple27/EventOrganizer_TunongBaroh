@@ -10,9 +10,36 @@ import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Target, History, Users, Award, ShieldCheck, MapPin } from "lucide-react";
 
+const teamMembers = [
+  {
+    name: "Awaludin Azril",
+    role: "Penasehat",
+    initial: "A",
+  },
+  {
+    name: "Dedek Kombi",
+    role: "Direktur Utama",
+    initial: "D",
+  },
+  {
+    name: "Muhammad Wafiq Afansa",
+    role: "Manajer Administrasi",
+    initial: "M",
+  },
+  {
+    name: "Azkan Hazim Qaula",
+    role: "Manajer Tempat dan Peralatan",
+    initial: "A",
+  },
+  {
+    name: "Himi Abdullah",
+    role: "Manajer Diklat",
+    initial: "H",
+  },
+];
+
 export default function ProfilePage() {
   const aboutImg = PlaceHolderImages.find(i => i.id === "hero-nature");
-  const activityImg = PlaceHolderImages.find(i => i.id === "outdoor-training");
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -22,7 +49,7 @@ export default function ProfilePage() {
         {/* Profile Hero */}
         <section className="relative py-24 bg-primary text-primary-foreground overflow-hidden">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
             <div className="max-w-3xl">
               <Badge className="mb-4 bg-accent text-accent-foreground border-none px-4 py-1 text-sm font-bold">
                 Mengenal Kami
@@ -40,7 +67,7 @@ export default function ProfilePage() {
         {/* Cerita Kami */}
         <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl animate-in slide-in-from-left duration-700">
               <Image
                 src={aboutImg?.imageUrl || ""}
                 alt="Tentang Tunong Baroh"
@@ -48,7 +75,7 @@ export default function ProfilePage() {
                 className="object-cover"
               />
             </div>
-            <div className="space-y-8">
+            <div className="space-y-8 animate-in slide-in-from-right duration-700">
               <div className="flex items-center gap-3 text-primary">
                 <History className="h-6 w-6" />
                 <h2 className="text-3xl font-headline font-bold">Cerita Kami</h2>
@@ -89,7 +116,7 @@ export default function ProfilePage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              <Card className="border-none shadow-xl rounded-[2.5rem] bg-white p-10">
+              <Card className="border-none shadow-xl rounded-[2.5rem] bg-white p-10 hover:shadow-2xl transition-shadow duration-300">
                 <CardContent className="p-0">
                   <h3 className="text-2xl font-bold text-primary mb-6 flex items-center gap-2">
                     <span className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">1</span>
@@ -101,7 +128,7 @@ export default function ProfilePage() {
                 </CardContent>
               </Card>
 
-              <Card className="border-none shadow-xl rounded-[2.5rem] bg-white p-10">
+              <Card className="border-none shadow-xl rounded-[2.5rem] bg-white p-10 hover:shadow-2xl transition-shadow duration-300">
                 <CardContent className="p-0">
                   <h3 className="text-2xl font-bold text-primary mb-6 flex items-center gap-2">
                     <span className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center text-primary text-xl">2</span>
@@ -131,37 +158,21 @@ export default function ProfilePage() {
           <div className="text-center mb-16">
             <Users className="h-10 w-10 text-primary mx-auto mb-4" />
             <h2 className="font-headline text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-            <p className="text-muted-foreground text-lg">Para profesional di balik program-gram Tunong Baroh.</p>
+            <p className="text-muted-foreground text-lg">Para profesional di balik program-program Tunong Baroh.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            <Card className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group">
-              <CardContent className="p-8 text-center">
-                <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
-                  <AvatarImage src="" alt="Awaludin" />
-                  <AvatarFallback className="bg-primary text-white text-3xl font-bold">A</AvatarFallback>
-                </Avatar>
-                <h3 className="text-2xl font-bold text-primary mb-2">Awaludin</h3>
-                <p className="text-muted-foreground font-medium mb-4 uppercase tracking-widest text-xs">Ketua / Penanggung Jawab</p>
-                <div className="inline-flex items-center gap-2 px-4 py-1 bg-secondary rounded-full text-xs font-bold text-primary">
-                  WhatsApp: +62 813-6091-1234
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group">
-              <CardContent className="p-8 text-center">
-                <Avatar className="w-32 h-32 mx-auto mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
-                  <AvatarImage src="" alt="Dedek" />
-                  <AvatarFallback className="bg-primary text-white text-3xl font-bold">D</AvatarFallback>
-                </Avatar>
-                <h3 className="text-2xl font-bold text-primary mb-2">Dedek</h3>
-                <p className="text-muted-foreground font-medium mb-4 uppercase tracking-widest text-xs">Manajemen Operasional</p>
-                <div className="inline-flex items-center gap-2 px-4 py-1 bg-secondary rounded-full text-xs font-bold text-primary">
-                  WhatsApp: +62 823-6100-3219
-                </div>
-              </CardContent>
-            </Card>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {teamMembers.map((member, index) => (
+              <Card key={index} className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5" style={{ animationDelay: `${index * 100}ms` }}>
+                <CardContent className="p-8 text-center">
+                  <Avatar className="w-24 h-24 mx-auto mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
+                    <AvatarFallback className="bg-primary text-white text-2xl font-bold">{member.initial}</AvatarFallback>
+                  </Avatar>
+                  <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
+                  <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px]">{member.role}</p>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </section>
 

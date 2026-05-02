@@ -1,7 +1,7 @@
 
-# EcoCatalyst Hub - Tunong Baroh Event Organizer
+# Tunong Baroh Event Organizer - EcoCatalyst Hub
 
-Proyek ini adalah platform manajemen acara dan katalog program untuk Tunong Baroh Event Organizer di Banda Aceh.
+Proyek ini adalah platform manajemen acara dan katalog program untuk **Tunong Baroh Event Organizer** di Banda Aceh.
 
 ## Status Proyek
 🚀 **Berhasil Dimigrasi ke GitHub:** [Xpurple27/EventOrganizer_TunongBaroh](https://github.com/Xpurple27/EventOrganizer_TunongBaroh)
@@ -15,11 +15,18 @@ EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dal
 - **Database & Auth:** Firebase (Firestore & Authentication)
 - **AI:** Genkit (Google Gemini) untuk fitur cerdas
 
+## Tim Penggerak
+- **Awaludin Azril:** Penasehat
+- **Dedek Kombi:** Direktur Utama
+- **Muhammad Wafiq Afansa:** Manajer Administrasi
+- **Azkan Hazim Qaula:** Manajer Tempat dan Peralatan
+- **Himi Abdullah:** Manajer Diklat
+
 ## Masalah Autentikasi Git (Personal Access Token)
 Jika Anda mendapatkan error `Invalid username or token`, gunakan **Personal Access Token (PAT)** sebagai pengganti password:
 1. Buat PAT di GitHub: **Settings > Developer Settings > Personal Access Tokens > Tokens (classic)**.
 2. Centang cakupan `repo`.
-3. Jalankan perintah ini di terminal:
+3. Jalankan perintah ini di terminal untuk memperbarui akses:
    `git remote set-url origin https://USERNAME:TOKEN@github.com/USERNAME/REPO_NAME.git`
 4. Lakukan `git push` kembali.
 
@@ -37,9 +44,8 @@ Jika Anda melakukan perubahan, jalankan perintah ini di terminal:
 4. Klik **Deploy**.
 
 ## Kontak Operasional
-- **Awaludin:** [+62 813-6091-1234](https://wa.me/6281360911234)
-- **Dedek:** [+62 823-6100-3219](https://wa.me/6282361003219)
 - **Lokasi:** Banda Aceh, Indonesia
+- **WhatsApp:** [+62 813-6091-1234](https://wa.me/6281360911234)
 
 ---
 &copy; 2024 Tunong Baroh Event Organizer. Hak Cipta Dilindungi.
