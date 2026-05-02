@@ -2,9 +2,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Leaf } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 const navLinks = [
   { name: "Beranda", href: "/" },
@@ -16,12 +17,24 @@ const navLinks = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-background/80 backdrop-blur-md border-b">
+    <nav className={cn(
+      "sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b",
+      scrolled ? "bg-background/95 backdrop-blur-md py-2 shadow-sm" : "bg-background py-4"
+    )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <Leaf className="h-8 w-8 text-primary" />
             <span className="font-headline text-2xl font-bold text-primary tracking-tight">
               Tunong Baroh
@@ -34,12 +47,13 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-medium"
+                className="text-foreground/80 hover:text-primary transition-all duration-200 font-medium relative group"
               >
                 {link.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </Link>
             ))}
-            <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90">
+            <Button asChild className="bg-primary text-primary-foreground hover:scale-105 active:scale-95 transition-transform rounded-full">
               <Link href="/booking">Pesan Sekarang</Link>
             </Button>
           </div>
@@ -48,7 +62,7 @@ export function Navbar() {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="text-foreground hover:text-primary transition-colors"
+              className="text-foreground hover:text-primary transition-colors p-2"
             >
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
@@ -57,27 +71,28 @@ export function Navbar() {
       </div>
 
       {/* Mobile Nav */}
-      {isOpen && (
-        <div className="md:hidden bg-background border-b animate-in slide-in-from-top duration-300">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="block px-3 py-2 text-foreground/80 hover:text-primary font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </Link>
-            ))}
-            <div className="px-3 py-2">
-              <Button asChild className="w-full bg-primary text-primary-foreground">
-                <Link href="/booking" onClick={() => setIsOpen(false)}>Pesan Sekarang</Link>
-              </Button>
-            </div>
+      <div className={cn(
+        "md:hidden bg-background border-b overflow-hidden transition-all duration-300 ease-in-out",
+        isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+      )}>
+        <div className="px-4 pt-2 pb-6 space-y-2">
+          {navLinks.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="block px-3 py-3 text-lg text-foreground/80 hover:text-primary font-medium border-b border-secondary last:border-0"
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
+            </Link>
+          ))}
+          <div className="pt-4">
+            <Button asChild className="w-full bg-primary text-primary-foreground rounded-xl h-12">
+              <Link href="/booking" onClick={() => setIsOpen(false)}>Pesan Sekarang</Link>
+            </Button>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }
