@@ -2,36 +2,42 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Target, History, Users, Award, ShieldCheck, MapPin } from "lucide-react";
+import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight } from "lucide-react";
 
 const teamMembers = [
   {
+    slug: "awaludin-azril",
     name: "Awaludin Azril",
     role: "Penasehat",
     initial: "A",
   },
   {
+    slug: "dedek-kombi",
     name: "Dedek Kombi",
     role: "Direktur Utama",
     initial: "D",
   },
   {
+    slug: "muhammad-wafiq-afansa",
     name: "Muhammad Wafiq Afansa",
     role: "Manajer Administrasi",
     initial: "M",
   },
   {
+    slug: "azkan-hazim-qaula",
     name: "Azkan Hazim Qaula",
     role: "Manajer Tempat dan Peralatan",
     initial: "A",
   },
   {
+    slug: "himi-abdullah",
     name: "Himi Abdullah",
     role: "Manajer Diklat",
     initial: "H",
@@ -158,20 +164,25 @@ export default function ProfilePage() {
           <div className="text-center mb-16">
             <Users className="h-10 w-10 text-primary mx-auto mb-4" />
             <h2 className="font-headline text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-            <p className="text-muted-foreground text-lg">Para profesional di balik program-program Tunong Baroh.</p>
+            <p className="text-muted-foreground text-lg">Para profesional di balik program-program Tunong Baroh. Klik profil untuk detail.</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
-              <Card key={index} className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group hover:shadow-2xl transition-all duration-300 animate-in fade-in slide-in-from-bottom-5" style={{ animationDelay: `${index * 100}ms` }}>
-                <CardContent className="p-8 text-center">
-                  <Avatar className="w-24 h-24 mx-auto mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
-                    <AvatarFallback className="bg-primary text-white text-2xl font-bold">{member.initial}</AvatarFallback>
-                  </Avatar>
-                  <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
-                  <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px]">{member.role}</p>
-                </CardContent>
-              </Card>
+              <Link href={`/profile/team/${member.slug}`} key={index}>
+                <Card className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer animate-in fade-in slide-in-from-bottom-5 h-full" style={{ animationDelay: `${index * 100}ms` }}>
+                  <CardContent className="p-8 text-center flex flex-col items-center h-full justify-center">
+                    <Avatar className="w-24 h-24 mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
+                      <AvatarFallback className="bg-primary text-white text-2xl font-bold">{member.initial}</AvatarFallback>
+                    </Avatar>
+                    <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
+                    <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px] mb-4">{member.role}</p>
+                    <div className="flex items-center gap-1 text-primary text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                      Lihat Profil <ArrowRight className="h-3 w-3" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             ))}
           </div>
         </section>
