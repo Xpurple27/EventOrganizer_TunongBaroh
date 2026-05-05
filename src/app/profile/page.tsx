@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight } from "lucide-react";
+import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle } from "lucide-react";
 
 const teamMembers = [
   {
@@ -44,6 +44,87 @@ const teamMembers = [
   },
 ];
 
+const pastEvents = [
+  {
+    year: "2015",
+    title: "Outbound Pemantapan Nilai-Nilai Kebangsaan",
+    location: "Resimen Induk Kodam (RINDAM) Iskandar Muda, Mata Ie - Aceh Besar",
+    client: "Lembaga Pertahanan Nasional (LEMHANAS) Republik Indonesia",
+  },
+  {
+    year: "2014",
+    title: "Kids Programme",
+    location: "Ds. Lhang, Aceh Besar",
+    client: "SMPIT Nurul Fikri Aceh",
+  },
+  {
+    year: "2014",
+    title: "Outbound for Capacity Building Keluarga Besar LPP - RRI Banda Aceh",
+    location: "Beurayeun - Aceh Besar",
+    client: "LPP - RRI Banda Aceh",
+  },
+  {
+    year: "2013",
+    title: "Up Grading Mentor",
+    location: "Beurayeun - Aceh Besar",
+    client: "Rumah Zakat",
+  },
+  {
+    year: "2013",
+    title: "Outbound for Student Capacity",
+    location: "Neuhen - Aceh Besar",
+    client: "Akademi Keperawatan Tjoet Nyak Dhien",
+  },
+  {
+    year: "2011",
+    title: "Outbound for Student Capacity",
+    location: "Darussalam - Banda Aceh",
+    client: "Akademi Keperawatan Tjoet Nyak Dhien",
+  },
+  {
+    year: "2011",
+    title: "Pembuatan Jalur Panjat Tebing Alam",
+    location: "Tebing Lampuuk - Aceh Besar & Tebing Km. 0 - Sabang",
+    client: "Proyek Konservasi Alam",
+  },
+  {
+    year: "2011",
+    title: "Pelatihan Selam Dasar One Star - CMAS",
+    location: "Ulee Lheue - Banda Aceh & Krueng Raya - Aceh Besar",
+    client: "Pegiat Alam Terbuka",
+  },
+  {
+    year: "2010",
+    title: "Outbound for Capacity Building",
+    location: "Pantai Suak Seumaseh - Aceh Barat",
+    client: "IBU Foundation",
+  },
+  {
+    year: "2009",
+    title: "Games for Orphan",
+    location: "Taman Putroe Phang - Banda Aceh",
+    client: "Rumah Zakat",
+  },
+  {
+    year: "2008",
+    title: "Outbound for Capacity Building",
+    location: "SPN Seulawah, Labuy, Singkil, PIM (Aceh Utara), Takengon",
+    client: "BRR NAD - Nias",
+  },
+  {
+    year: "2007",
+    title: "Outbound for Capacity Building",
+    location: "Jantho - Aceh Besar",
+    client: "BEM Fakultas Dakwah IAIN Ar-Raniry",
+  },
+  {
+    year: "2006",
+    title: "Outbound for Economic Faculty Student",
+    location: "Mata Ie - Aceh Besar",
+    client: "LDK Al-Mizan, FE Universitas Syiah Kuala",
+  },
+];
+
 export default function ProfilePage() {
   const aboutImg = PlaceHolderImages.find(i => i.id === "hero-nature");
 
@@ -57,14 +138,14 @@ export default function ProfilePage() {
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center md:text-left">
             <div className="max-w-3xl">
-              <Badge className="mb-4 bg-accent text-accent-foreground border-none px-4 py-1 text-sm font-bold">
+              <Badge className="mb-4 bg-accent text-accent-foreground border-none px-4 py-1 text-sm font-bold shadow-sm">
                 Mengenal Kami
               </Badge>
               <h1 className="font-headline text-5xl md:text-6xl font-bold mb-6 leading-tight">
                 Tunong Baroh Outdoor Management
               </h1>
               <p className="text-xl md:text-2xl font-light text-primary-foreground/90 leading-relaxed">
-                Dedikasi untuk pengembangan karakter melalui alam dan aksi nyata pelestarian lingkungan di Bumi Serambi Mekkah.
+                Dedikasi untuk pengembangan karakter melalui alam dan aksi nyata pelestarian lingkungan di Bumi Serambi Mekkah sejak 2006.
               </p>
             </div>
           </div>
@@ -129,7 +210,7 @@ export default function ProfilePage() {
                     Visi Utama
                   </h3>
                   <p className="text-lg text-muted-foreground leading-relaxed">
-                    Menjadi katalisator utama dalam pembentukan karakter pemimpin masa depan yang kompeten, berdaya saing, dan memiliki kepedulian tinggi terhadap pelestarian ekosistem alam, khususnya di wilayah Aceh.
+                    Terciptanya lingkungan hidup alami dan nyaman yang mendukung kehidupan berkualitas dan harmoni dengan terbentuknya karakter pribadi yang memiliki integritas tinggi, berakhlak mulia serta menjaga kelestarian lingkungan hidup.
                   </p>
                 </CardContent>
               </Card>
@@ -142,10 +223,10 @@ export default function ProfilePage() {
                   </h3>
                   <ul className="space-y-4">
                     {[
-                      "Menyelenggarakan pelatihan luar ruang berkualitas berbasis standar internasional.",
-                      "Menginisiasi aksi konservasi nyata seperti penanaman mangrove dan penghijauan.",
-                      "Edukasi lingkungan bagi generasi muda melalui program sekolah alam.",
-                      "Membangun kolaborasi strategis antara pemerintah, swasta, dan masyarakat dalam menjaga alam."
+                      "Melatih dan membentuk karakter masyarakat dalam berkegiatan di alam terbuka yang aman, nyaman dan menjaga lingkungan.",
+                      "Melakukan pendidikan dan pelatihan kepada masyarakat tentang tindakan penghematan sumber daya alam, pemanfaatan sumber daya alam yang dibenarkan, serta pelestarian lingkungan hidup.",
+                      "Melakukan penyelamatan lingkungan hidup melalui kampanye, penyuluhan dan terlibat langsung dalam program-program Green and Clean.",
+                      "Menjadi lembaga yang melakukan penilaian dan distributor standarisasi penggunaan alat atau perlengkapan atau peralatan berkegiatan di alam terbuka."
                     ].map((misi, i) => (
                       <li key={i} className="flex gap-3 text-muted-foreground">
                         <div className="h-2 w-2 bg-accent rounded-full mt-2.5 shrink-0" />
@@ -159,36 +240,77 @@ export default function ProfilePage() {
           </div>
         </section>
 
-        {/* Tim Kami */}
+        {/* Rekam Jejak Organizer */}
         <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <Users className="h-10 w-10 text-primary mx-auto mb-4" />
-            <h2 className="font-headline text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-            <p className="text-muted-foreground text-lg">Para profesional di balik program-program Tunong Baroh. Klik profil untuk detail.</p>
+            <CheckCircle className="h-10 w-10 text-primary mx-auto mb-4" />
+            <h2 className="font-headline text-4xl font-bold text-primary mb-4">Rekam Jejak Organizer</h2>
+            <p className="text-muted-foreground text-lg">Pengalaman panjang kami dalam mengelola berbagai kegiatan besar di Aceh.</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <Link href={`/profile/team/${member.slug}`} key={index}>
-                <Card className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer animate-in fade-in slide-in-from-bottom-5 h-full" style={{ animationDelay: `${index * 100}ms` }}>
-                  <CardContent className="p-8 text-center flex flex-col items-center h-full justify-center">
-                    <Avatar className="w-24 h-24 mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
-                      <AvatarFallback className="bg-primary text-white text-2xl font-bold">{member.initial}</AvatarFallback>
-                    </Avatar>
-                    <h3 className="text-xl font-bold text-primary mb-1">{member.name}</h3>
-                    <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px] mb-4">{member.role}</p>
-                    <div className="flex items-center gap-1 text-primary text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                      Lihat Profil <ArrowRight className="h-3 w-3" />
+          <div className="space-y-6">
+            {pastEvents.map((event, index) => (
+              <Card key={index} className="border-none bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary group">
+                <CardContent className="p-6">
+                  <div className="flex flex-col md:flex-row gap-6 md:items-center">
+                    <div className="flex-shrink-0">
+                      <div className="bg-primary/10 text-primary font-bold px-6 py-3 rounded-xl flex flex-col items-center justify-center min-w-[100px] group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                        <Calendar className="h-4 w-4 mb-1" />
+                        <span className="text-xl">{event.year}</span>
+                      </div>
                     </div>
-                  </CardContent>
-                </Card>
-              </Link>
+                    <div className="flex-grow space-y-2">
+                      <h3 className="text-xl font-bold text-primary leading-tight font-headline">"{event.title}"</h3>
+                      <div className="flex flex-col sm:flex-row gap-4 text-sm text-muted-foreground">
+                        <div className="flex items-center gap-1.5">
+                          <MapPin className="h-4 w-4 text-accent" />
+                          {event.location}
+                        </div>
+                        <div className="flex items-center gap-1.5 font-medium text-foreground">
+                          <ShieldCheck className="h-4 w-4 text-primary" />
+                          {event.client}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </section>
 
+        {/* Tim Kami */}
+        <section className="py-24 bg-secondary/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <Users className="h-10 w-10 text-primary mx-auto mb-4" />
+              <h2 className="font-headline text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
+              <p className="text-muted-foreground text-lg">Para profesional di balik program-program Tunong Baroh. Klik profil untuk detail.</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              {teamMembers.map((member, index) => (
+                <Link href={`/profile/team/${member.slug}`} key={index}>
+                  <Card className="border-none bg-white shadow-lg rounded-3xl overflow-hidden group hover:shadow-2xl hover:scale-[1.03] transition-all duration-300 cursor-pointer animate-in fade-in slide-in-from-bottom-5 h-full" style={{ animationDelay: `${index * 100}ms` }}>
+                    <CardContent className="p-8 text-center flex flex-col items-center h-full justify-center">
+                      <Avatar className="w-24 h-24 mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
+                        <AvatarFallback className="bg-primary text-white text-2xl font-bold">{member.initial}</AvatarFallback>
+                      </Avatar>
+                      <h3 className="text-xl font-bold text-primary mb-1 font-headline">{member.name}</h3>
+                      <p className="text-muted-foreground font-medium uppercase tracking-widest text-[10px] mb-4">{member.role}</p>
+                      <div className="flex items-center gap-1 text-primary text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                        Lihat Profil <ArrowRight className="h-3 w-3" />
+                      </div>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Lokasi */}
-        <section className="py-20 bg-secondary/10">
+        <section className="py-20">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <MapPin className="h-8 w-8 text-primary mx-auto mb-4" />
             <h2 className="text-2xl font-bold mb-4 font-headline">Markas Operasional</h2>
