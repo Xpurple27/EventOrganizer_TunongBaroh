@@ -17,7 +17,7 @@ const galleryCategories = [
 ];
 
 const galleryItems = [
-  { id: 1, imageId: "mangrove-planting", category: "action", title: "Penanaman Mangrove Pesisir" },
+  { id: 1, imageId: "mangrove-planting", category: "action", title: "Tenda Perkemahan Outdoor" },
   { id: 2, imageId: "outdoor-training", category: "training", title: "Team Building Outdoor" },
   { id: 3, imageId: "nature-school", category: "school", title: "Siswa Belajar di Alam" },
   { id: 4, imageId: "indoor-leadership", category: "training", title: "Workshop Kepemimpinan" },
