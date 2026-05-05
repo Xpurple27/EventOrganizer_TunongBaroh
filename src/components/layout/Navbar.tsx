@@ -35,25 +35,25 @@ export function Navbar() {
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
-          <Link href="/" className="flex items-center gap-4 hover:opacity-90 transition-opacity">
+          <Link href="/" className="flex items-center gap-5 hover:opacity-90 transition-opacity">
             <Image 
               src="/logo.png" 
               alt="Tunong Baroh Logo" 
-              width={50} 
-              height={50} 
-              className="h-12 w-12 object-contain"
+              width={64} 
+              height={64} 
+              className="h-16 w-16 object-contain"
             />
             <div className="flex flex-col items-start">
               <div className="flex items-baseline leading-none">
                 <span 
                   style={{ fontFamily: '"Berlin Sans FB", "Arial Rounded MT Bold", sans-serif' }} 
-                  className="text-2xl md:text-3xl font-bold text-black lowercase"
+                  className="text-2xl md:text-4xl font-bold text-black lowercase"
                 >
                   tunong
                 </span>
                 <span 
                   style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} 
-                  className="text-2xl md:text-3xl font-bold text-[#FF0000] uppercase ml-0.5"
+                  className="text-2xl md:text-4xl font-bold text-[#FF0000] uppercase ml-0.5"
                 >
                   BARÔH
                 </span>
@@ -62,7 +62,7 @@ export function Navbar() {
               <div className="w-full h-[2px] bg-repeat-x bg-[length:10px_2px] mt-0.5" 
                    style={{ backgroundImage: 'linear-gradient(45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%), linear-gradient(-45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%)' }}>
               </div>
-              <span className="text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-medium text-black mt-1">
+              <span className="text-[10px] md:text-[11px] uppercase tracking-[0.15em] font-medium text-black mt-1">
                 training - organizer - distribution
               </span>
             </div>
