@@ -7,19 +7,29 @@ export function Footer() {
   return (
     <footer className="bg-secondary/30 border-t py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <Link href="/" className="flex items-center gap-2">
-              <Image 
-                src="/logo.png" 
-                alt="Logo Tunong Baroh" 
-                width={24} 
-                height={24} 
-                className="h-6 w-6 object-contain"
-              />
-              <span className="font-headline text-xl font-bold text-primary">Tunong Baroh</span>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+          <div className="space-y-6">
+            <Link href="/" className="flex flex-col items-start hover:opacity-90 transition-opacity">
+              <div className="flex items-baseline leading-none">
+                <span 
+                  style={{ fontFamily: '"Berlin Sans FB", "Arial Rounded MT Bold", sans-serif' }} 
+                  className="text-xl md:text-2xl font-bold text-black lowercase"
+                >
+                  tunong
+                </span>
+                <span 
+                  style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} 
+                  className="text-xl md:text-2xl font-bold text-[#FF0000] uppercase ml-0.5"
+                >
+                  BARÔH
+                </span>
+              </div>
+              <div className="w-32 h-[1px] bg-[#FF0000] mt-1 opacity-50"></div>
+              <span className="text-[8px] uppercase tracking-[0.1em] font-medium text-black mt-1">
+                training - organizer - distribution
+              </span>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed">
+            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Pembelajaran eksperiensial dan pelatihan berbasis alam. Membangun pemimpin, melindungi masa depan kita.
             </p>
             <div className="flex space-x-4">

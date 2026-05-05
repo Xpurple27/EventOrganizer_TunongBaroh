@@ -34,17 +34,28 @@ export function Navbar() {
       scrolled ? "bg-background/95 backdrop-blur-md py-2 shadow-sm" : "bg-background py-4"
     )}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
-          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-            <Image 
-              src="/logo.png" 
-              alt="Logo Tunong Baroh" 
-              width={32} 
-              height={32} 
-              className="h-8 w-8 object-contain"
-            />
-            <span className="font-headline text-2xl font-bold text-primary tracking-tight">
-              Tunong Baroh
+        <div className="flex justify-between h-20 items-center">
+          <Link href="/" className="flex flex-col items-center hover:opacity-90 transition-opacity">
+            <div className="flex items-baseline leading-none">
+              <span 
+                style={{ fontFamily: '"Berlin Sans FB", "Arial Rounded MT Bold", sans-serif' }} 
+                className="text-2xl md:text-3xl font-bold text-black lowercase"
+              >
+                tunong
+              </span>
+              <span 
+                style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} 
+                className="text-2xl md:text-3xl font-bold text-[#FF0000] uppercase ml-0.5"
+              >
+                BARÔH
+              </span>
+            </div>
+            {/* Zigzag line simulation */}
+            <div className="w-full h-[2px] bg-repeat-x bg-[length:10px_2px] mt-0.5" 
+                 style={{ backgroundImage: 'linear-gradient(45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%), linear-gradient(-45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%)' }}>
+            </div>
+            <span className="text-[9px] md:text-[10px] uppercase tracking-[0.15em] font-medium text-black mt-1">
+              training - organizer - distribution
             </span>
           </Link>
 
