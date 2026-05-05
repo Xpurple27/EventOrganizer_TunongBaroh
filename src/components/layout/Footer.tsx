@@ -1,6 +1,7 @@
 
 import Link from "next/link";
-import { Leaf, Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import Image from "next/image";
+import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
 
 export function Footer() {
   return (
@@ -9,7 +10,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
             <Link href="/" className="flex items-center gap-2">
-              <Leaf className="h-6 w-6 text-primary" />
+              <Image 
+                src="/logo.png" 
+                alt="Logo Tunong Baroh" 
+                width={24} 
+                height={24} 
+                className="h-6 w-6 object-contain"
+              />
               <span className="font-headline text-xl font-bold text-primary">Tunong Baroh</span>
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed">
