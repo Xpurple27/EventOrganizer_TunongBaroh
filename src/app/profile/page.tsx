@@ -10,7 +10,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle, Briefcase, GraduationCap } from "lucide-react";
+import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle, Briefcase, GraduationCap, Package2 } from "lucide-react";
 
 const teamMembers = [
   {
@@ -164,6 +164,51 @@ const trainingEvents = [
   },
 ];
 
+const distributionEvents = [
+  {
+    year: "Sejak 2006",
+    title: "Penjualan Atribut, Seragam dan Perlengkapan Perkemahan Pramuka",
+    client: "Gerakan Pramuka (Kwarda Aceh, Kwarcab, Sekolah/Yayasan)",
+    desc: "Melakukan penjualan secara personal maupun institusional. Sejak 2013 telah berdiri perusahaan produksi khusus."
+  },
+  {
+    year: "2014",
+    title: "Memproduksi Jaket untuk Sekolah Demokrasi",
+    location: "Lhokseumawe",
+    client: "LSM Sepakat"
+  },
+  {
+    year: "2012 - 2014",
+    title: "Memproduksi Seragam Olahraga",
+    location: "Banda Aceh",
+    client: "SMU Lab School Universitas Syiah Kuala"
+  },
+  {
+    year: "2012",
+    title: "Memproduksi Pakaian Lapangan, Rompi serta Velbed",
+    location: "Pidie Jaya",
+    client: "PMI Pidie Jaya"
+  },
+  {
+    year: "2010 - 2011",
+    title: "Memproduksi Tas Daypack untuk Sekolah Demokrasi",
+    location: "Lhokseumawe",
+    client: "LSM Sepakat"
+  },
+  {
+    year: "2010",
+    title: "Memproduksi Seragam Instansi UPTD P2KK",
+    location: "Banda Aceh",
+    client: "Dinas Kesehatan Provinsi Aceh"
+  },
+  {
+    year: "2009",
+    title: "Memproduksi Atribut Dinas Perikanan dan Kelautan",
+    location: "Pidie Jaya",
+    client: "Dinas Perikanan dan Kelautan Pidie Jaya"
+  },
+];
+
 export default function ProfilePage() {
   const aboutImg = PlaceHolderImages.find(i => i.id === "hero-nature");
 
@@ -241,19 +286,23 @@ export default function ProfilePage() {
                 Track Record
               </div>
               <h2 className="font-headline text-4xl font-bold text-primary mb-4">Rekam Jejak Kami</h2>
-              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Pengalaman panjang kami dalam mengelola berbagai kegiatan besar dan pelatihan di Aceh.</p>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Pengalaman panjang kami dalam mengelola berbagai kegiatan, pelatihan, dan produksi di Aceh.</p>
             </div>
 
             <Tabs defaultValue="organizer" className="w-full">
-              <div className="flex justify-center mb-10">
-                <TabsList className="bg-white p-1 rounded-2xl shadow-sm border border-secondary h-auto">
-                  <TabsTrigger value="organizer" className="rounded-xl px-8 py-3 data-[state=active]:bg-primary data-[state=active]:text-white transition-all font-bold">
+              <div className="flex justify-center mb-10 overflow-x-auto pb-2">
+                <TabsList className="bg-white p-1 rounded-2xl shadow-sm border border-secondary h-auto flex-nowrap">
+                  <TabsTrigger value="organizer" className="rounded-xl px-4 md:px-8 py-3 data-[state=active]:bg-primary data-[state=active]:text-white transition-all font-bold whitespace-nowrap">
                     <Briefcase className="h-4 w-4 mr-2" />
                     Event Organizer
                   </TabsTrigger>
-                  <TabsTrigger value="trainer" className="rounded-xl px-8 py-3 data-[state=active]:bg-primary data-[state=active]:text-white transition-all font-bold">
+                  <TabsTrigger value="trainer" className="rounded-xl px-4 md:px-8 py-3 data-[state=active]:bg-primary data-[state=active]:text-white transition-all font-bold whitespace-nowrap">
                     <GraduationCap className="h-4 w-4 mr-2" />
                     Trainer & Pemateri
+                  </TabsTrigger>
+                  <TabsTrigger value="distribution" className="rounded-xl px-4 md:px-8 py-3 data-[state=active]:bg-primary data-[state=active]:text-white transition-all font-bold whitespace-nowrap">
+                    <Package2 className="h-4 w-4 mr-2" />
+                    Produksi & Distribusi
                   </TabsTrigger>
                 </TabsList>
               </div>
@@ -316,6 +365,39 @@ export default function ProfilePage() {
                               {event.client}
                             </div>
                           </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </TabsContent>
+
+              <TabsContent value="distribution" className="space-y-6 animate-in fade-in duration-500">
+                {distributionEvents.map((event, index) => (
+                  <Card key={index} className="border-none bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border-l-4 border-l-blue-500 group">
+                    <CardContent className="p-6">
+                      <div className="flex flex-col md:flex-row gap-6 md:items-center">
+                        <div className="flex-shrink-0">
+                          <div className="bg-blue-50 text-blue-600 font-bold px-6 py-3 rounded-xl flex flex-col items-center justify-center min-w-[120px] group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300">
+                            <Package2 className="h-4 w-4 mb-1" />
+                            <span className="text-lg">{event.year}</span>
+                          </div>
+                        </div>
+                        <div className="flex-grow space-y-2">
+                          <h3 className="text-xl font-bold text-primary leading-tight font-headline">{event.title}</h3>
+                          <div className="flex flex-col sm:flex-row gap-4 text-sm text-muted-foreground">
+                            {event.location && (
+                              <div className="flex items-center gap-1.5">
+                                <MapPin className="h-4 w-4 text-accent" />
+                                {event.location}
+                              </div>
+                            )}
+                            <div className="flex items-center gap-1.5 font-medium text-foreground">
+                              <ShieldCheck className="h-4 w-4 text-primary" />
+                              {event.client}
+                            </div>
+                          </div>
+                          {event.desc && <p className="text-sm italic text-muted-foreground mt-2">{event.desc}</p>}
                         </div>
                       </div>
                     </CardContent>
