@@ -9,7 +9,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle } from "lucide-react";
+import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle, Briefcase } from "lucide-react";
 
 const teamMembers = [
   {
@@ -193,6 +193,50 @@ export default function ProfilePage() {
           </div>
         </section>
 
+        {/* Rekam Jejak Organizer - MOVED UP FOR VISIBILITY */}
+        <section id="track-record" className="py-24 bg-primary/5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-bold mb-4">
+                <Briefcase className="h-4 w-4" />
+                Track Record
+              </div>
+              <h2 className="font-headline text-4xl font-bold text-primary mb-4">Rekam Jejak Organizer</h2>
+              <p className="text-muted-foreground text-lg max-w-2xl mx-auto">Pengalaman panjang kami dalam mengelola berbagai kegiatan besar di Aceh sejak tahun 2006.</p>
+            </div>
+
+            <div className="space-y-6">
+              {pastEvents.map((event, index) => (
+                <Card key={index} className="border-none bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border-l-4 border-l-primary group">
+                  <CardContent className="p-6">
+                    <div className="flex flex-col md:flex-row gap-6 md:items-center">
+                      <div className="flex-shrink-0">
+                        <div className="bg-primary/10 text-primary font-bold px-6 py-3 rounded-xl flex flex-col items-center justify-center min-w-[100px] group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                          <Calendar className="h-4 w-4 mb-1" />
+                          <span className="text-xl">{event.year}</span>
+                        </div>
+                      </div>
+                      <div className="flex-grow space-y-2">
+                        <h3 className="text-xl font-bold text-primary leading-tight font-headline">"{event.title}"</h3>
+                        <div className="flex flex-col sm:flex-row gap-4 text-sm text-muted-foreground">
+                          <div className="flex items-center gap-1.5">
+                            <MapPin className="h-4 w-4 text-accent" />
+                            {event.location}
+                          </div>
+                          <div className="flex items-center gap-1.5 font-medium text-foreground">
+                            <ShieldCheck className="h-4 w-4 text-primary" />
+                            {event.client}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Visi & Misi */}
         <section className="py-24 bg-secondary/20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -237,45 +281,6 @@ export default function ProfilePage() {
                 </CardContent>
               </Card>
             </div>
-          </div>
-        </section>
-
-        {/* Rekam Jejak Organizer */}
-        <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <CheckCircle className="h-10 w-10 text-primary mx-auto mb-4" />
-            <h2 className="font-headline text-4xl font-bold text-primary mb-4">Rekam Jejak Organizer</h2>
-            <p className="text-muted-foreground text-lg">Pengalaman panjang kami dalam mengelola berbagai kegiatan besar di Aceh.</p>
-          </div>
-
-          <div className="space-y-6">
-            {pastEvents.map((event, index) => (
-              <Card key={index} className="border-none bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 border-l-4 border-l-primary group">
-                <CardContent className="p-6">
-                  <div className="flex flex-col md:flex-row gap-6 md:items-center">
-                    <div className="flex-shrink-0">
-                      <div className="bg-primary/10 text-primary font-bold px-6 py-3 rounded-xl flex flex-col items-center justify-center min-w-[100px] group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                        <Calendar className="h-4 w-4 mb-1" />
-                        <span className="text-xl">{event.year}</span>
-                      </div>
-                    </div>
-                    <div className="flex-grow space-y-2">
-                      <h3 className="text-xl font-bold text-primary leading-tight font-headline">"{event.title}"</h3>
-                      <div className="flex flex-col sm:flex-row gap-4 text-sm text-muted-foreground">
-                        <div className="flex items-center gap-1.5">
-                          <MapPin className="h-4 w-4 text-accent" />
-                          {event.location}
-                        </div>
-                        <div className="flex items-center gap-1.5 font-medium text-foreground">
-                          <ShieldCheck className="h-4 w-4 text-primary" />
-                          {event.client}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
           </div>
         </section>
 

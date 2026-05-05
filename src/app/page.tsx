@@ -6,7 +6,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { ArrowRight, Trees, Users, Droplets, ClipboardCheck, Award } from "lucide-react";
+import { ArrowRight, Trees, Users, Droplets, ClipboardCheck, Award, CheckCircle, Briefcase } from "lucide-react";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-nature");
@@ -60,6 +60,29 @@ export default function Home() {
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-white/10 backdrop-blur-sm text-white border-white/50 hover:bg-white/20 hover:scale-105 transition-all rounded-full px-10 h-14 text-lg">
                 <Link href="/booking">Pesan Sesi</Link>
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Experience / Track Record Summary */}
+        <section className="py-20 bg-primary/5">
+          <div className="max-w-7xl mx-auto px-4 text-center">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-bold mb-6">
+              <Briefcase className="h-4 w-4" />
+              Berpengalaman Sejak 2006
+            </div>
+            <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-8">Dipercaya Oleh Berbagai Instansi</h2>
+            <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70">
+              <div className="font-bold text-xl text-muted-foreground italic">LEMHANAS RI</div>
+              <div className="font-bold text-xl text-muted-foreground italic">BRR NAD-Nias</div>
+              <div className="font-bold text-xl text-muted-foreground italic">Rumah Zakat</div>
+              <div className="font-bold text-xl text-muted-foreground italic">LPP-RRI</div>
+              <div className="font-bold text-xl text-muted-foreground italic">IBU Foundation</div>
+            </div>
+            <div className="mt-12">
+              <Button asChild variant="outline" className="rounded-full border-primary text-primary hover:bg-primary hover:text-white">
+                <Link href="/profile#track-record">Lihat Rekam Jejak Lengkap</Link>
               </Button>
             </div>
           </div>
