@@ -65,6 +65,24 @@
       "description": "Coastline rehabilitation",
       "imageUrl": "https://picsum.photos/seed/beach1/800/600",
       "imageHint": "coastal rehabilitation"
+    },
+    {
+      "id": "outbound-01",
+      "description": "Kegiatan Outbound Tunong Baroh 1",
+      "imageUrl": "/outbound/outbound-1.jpg",
+      "imageHint": "outbound activity"
+    },
+    {
+      "id": "outbound-02",
+      "description": "Kegiatan Outbound Tunong Baroh 2",
+      "imageUrl": "/outbound/outbound-2.jpg",
+      "imageHint": "team building"
+    },
+    {
+      "id": "outbound-03",
+      "description": "Kegiatan Outbound Tunong Baroh 3",
+      "imageUrl": "/outbound/outbound-3.jpg",
+      "imageHint": "forest game"
     }
   ]
 }

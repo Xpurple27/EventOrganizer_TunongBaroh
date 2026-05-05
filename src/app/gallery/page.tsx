@@ -21,12 +21,15 @@ const galleryItems = [
   { id: 2, imageId: "outdoor-training", category: "training", title: "Team Building Outdoor" },
   { id: 3, imageId: "nature-school", category: "school", title: "Siswa Belajar di Alam" },
   { id: 4, imageId: "indoor-leadership", category: "training", title: "Workshop Kepemimpinan" },
-  { id: 5, imageId: "gallery-1", category: "action", title: "Kegiatan Penghijauan" },
-  { id: 6, imageId: "gallery-2", category: "training", title: "Tantangan Fisik & Mental" },
-  { id: 7, imageId: "gallery-mangrove-1", category: "action", title: "Konservasi Mangrove" },
-  { id: 8, imageId: "gallery-team-1", category: "training", title: "Diskusi Kelompok" },
-  { id: 9, imageId: "gallery-school-1", category: "school", title: "Observasi Flora" },
-  { id: 10, imageId: "gallery-rehab-1", category: "action", title: "Rehabilitasi Pantai" },
+  { id: 5, imageId: "outbound-01", category: "training", title: "Keseruan Outbound 01" },
+  { id: 6, imageId: "outbound-02", category: "training", title: "Keseruan Outbound 02" },
+  { id: 7, imageId: "outbound-03", category: "training", title: "Keseruan Outbound 03" },
+  { id: 8, imageId: "gallery-1", category: "action", title: "Kegiatan Penghijauan" },
+  { id: 9, imageId: "gallery-2", category: "training", title: "Tantangan Fisik & Mental" },
+  { id: 10, imageId: "gallery-mangrove-1", category: "action", title: "Konservasi Mangrove" },
+  { id: 11, imageId: "gallery-team-1", category: "training", title: "Diskusi Kelompok" },
+  { id: 12, imageId: "gallery-school-1", category: "school", title: "Observasi Flora" },
+  { id: 13, imageId: "gallery-rehab-1", category: "action", title: "Rehabilitasi Pantai" },
 ];
 
 export default function GalleryPage() {
