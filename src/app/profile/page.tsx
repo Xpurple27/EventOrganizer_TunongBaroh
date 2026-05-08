@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle, Briefcase, GraduationCap, Package2 } from "lucide-react";
+import { BrandName } from "@/components/ui/brand-name";
 
 const teamMembers = [
   { slug: "awaludin-azril", name: "Awaludin Azril", role: "Penasehat", initial: "A" },
@@ -66,13 +67,13 @@ export default function ProfilePage() {
         <section className="relative py-16 md:py-24 bg-primary text-primary-foreground overflow-hidden">
           <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 md:w-96 h-64 md:h-96 bg-white/10 rounded-full blur-3xl" />
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div className="max-w-3xl text-center md:text-left">
+            <div className="max-w-4xl text-center md:text-left">
               <Badge className="mb-4 bg-accent text-accent-foreground border-none px-4 py-1 text-xs font-bold shadow-sm">
                 Mengenal Kami
               </Badge>
-              <h1 className="font-headline text-3xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">
-                Tunong Baroh Outdoor Management
-              </h1>
+              <div className="mb-4 md:mb-6">
+                <BrandName size="xl" withSubtext />
+              </div>
               <p className="text-lg md:text-2xl font-light text-primary-foreground/90 leading-relaxed max-w-2xl mx-auto md:mx-0">
                 Dedikasi untuk pengembangan karakter melalui alam dan aksi nyata pelestarian lingkungan di Aceh sejak 2006.
               </p>
@@ -91,14 +92,15 @@ export default function ProfilePage() {
                 className="object-cover"
               />
             </div>
-            <div className="space-y-6 md:space-y-8">
+            <div className="space-y-6 md:space-y-8 text-center md:text-left">
               <div className="flex items-center gap-3 text-primary justify-center md:justify-start">
                 <History className="h-6 w-6" />
                 <h2 className="text-2xl md:text-3xl font-headline font-bold">Cerita Kami</h2>
               </div>
-              <p className="text-base md:text-lg text-muted-foreground leading-relaxed text-center md:text-left">
-                Tunong Baroh Outdoor Management Training lahir dari kecintaan mendalam terhadap alam Aceh dan kebutuhan akan kepemimpinan yang berwawasan lingkungan. Kami percaya bahwa ruang kelas terbaik tidak memiliki dinding, dan guru terbaik adalah pengalaman langsung di alam terbuka.
-              </p>
+              <div className="text-base md:text-lg text-muted-foreground leading-relaxed flex flex-wrap justify-center md:justify-start items-center gap-2">
+                <BrandName size="sm" />
+                <span>Outdoor Management Training lahir dari kecintaan mendalam terhadap alam Aceh dan kebutuhan akan kepemimpinan yang berwawasan lingkungan. Kami percaya bahwa ruang kelas terbaik tidak memiliki dinding, dan guru terbaik adalah pengalaman langsung di alam terbuka.</span>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-4">
                 <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-secondary/50">
                   <ShieldCheck className="h-6 w-6 text-primary shrink-0" />
@@ -274,7 +276,7 @@ export default function ProfilePage() {
             <div className="text-center mb-12">
               <Users className="h-8 w-8 md:h-10 md:w-10 text-primary mx-auto mb-4" />
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-              <p className="text-muted-foreground text-sm md:text-lg">Para profesional di balik program-program kami.</p>
+              <p className="text-muted-foreground text-sm md:text-lg">Para profesional di balik program-gram kami.</p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { BrandName } from "@/components/ui/brand-name";
 
 const navLinks = [
   { name: "Beranda", href: "/" },
@@ -44,28 +45,8 @@ export function Navbar() {
                 className="object-contain"
               />
             </div>
-            <div className="flex flex-col items-start">
-              <div className="flex items-baseline leading-none">
-                <span 
-                  style={{ fontFamily: '"Berlin Sans FB", "Arial Rounded MT Bold", sans-serif' }} 
-                  className="text-lg md:text-3xl font-bold text-black lowercase"
-                >
-                  tunong
-                </span>
-                <span 
-                  style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} 
-                  className="text-lg md:text-3xl font-bold text-[#FF0000] uppercase ml-0.5"
-                >
-                  BARÔH
-                </span>
-              </div>
-              <div className="w-full h-[1.5px] bg-repeat-x bg-[length:8px_2px] mt-0.5" 
-                   style={{ backgroundImage: 'linear-gradient(45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%), linear-gradient(-45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%)' }}>
-              </div>
-              <span className="text-[8px] md:text-[10px] uppercase tracking-[0.1em] font-medium text-black mt-0.5 hidden xs:block">
-                training - organizer - distribution
-              </span>
-            </div>
+            <BrandName size="lg" withSubtext className="hidden xs:flex" />
+            <BrandName size="md" className="xs:hidden" />
           </Link>
 
           {/* Desktop Nav */}

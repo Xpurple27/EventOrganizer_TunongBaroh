@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import { BrandName } from "@/components/ui/brand-name";
 
 export function Footer() {
   return (
@@ -17,26 +18,7 @@ export function Footer() {
                 height={56} 
                 className="h-14 w-14 object-contain"
               />
-              <div className="flex flex-col items-start">
-                <div className="flex items-baseline leading-none">
-                  <span 
-                    style={{ fontFamily: '"Berlin Sans FB", "Arial Rounded MT Bold", sans-serif' }} 
-                    className="text-xl md:text-2xl font-bold text-black lowercase"
-                  >
-                    tunong
-                  </span>
-                  <span 
-                    style={{ fontFamily: '"Comic Sans MS", "Comic Sans", cursive' }} 
-                    className="text-xl md:text-2xl font-bold text-[#FF0000] uppercase ml-0.5"
-                  >
-                    BARÔH
-                  </span>
-                </div>
-                <div className="w-full h-[1px] bg-[#FF0000] mt-1 opacity-50"></div>
-                <span className="text-[9px] uppercase tracking-[0.1em] font-medium text-black mt-1">
-                  training - organizer - distribution
-                </span>
-              </div>
+              <BrandName size="md" withSubtext />
             </Link>
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
               Pembelajaran eksperiensial dan pelatihan berbasis alam. Membangun pemimpin, melindungi masa depan kita.
@@ -98,7 +80,7 @@ export function Footer() {
           </div>
         </div>
         <div className="mt-12 pt-8 border-t text-center text-xs text-muted-foreground">
-          &copy; {new Date().getFullYear()} Tunong Baroh Outdoor Management. Hak Cipta Dilindungi.
+          &copy; {new Date().getFullYear()} <BrandName size="xs" className="inline-flex" /> Outdoor Management. Hak Cipta Dilindungi.
         </div>
       </div>
     </footer>

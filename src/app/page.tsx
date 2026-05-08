@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { ArrowRight, Trees, Users, Droplets, ClipboardCheck, Award, CheckCircle, Briefcase } from "lucide-react";
+import { BrandName } from "@/components/ui/brand-name";
 
 export default function Home() {
   const heroImage = PlaceHolderImages.find((img) => img.id === "hero-nature");
@@ -51,9 +52,11 @@ export default function Home() {
             <h1 className="font-headline text-5xl md:text-7xl font-bold mb-6 drop-shadow-lg leading-tight">
               Mengubah Hidup Melalui <span className="text-accent">Alam</span>
             </h1>
-            <p className="text-xl md:text-2xl mb-10 font-light max-w-2xl mx-auto text-white/90">
-              Bergabunglah dengan Tunong Baroh untuk pembelajaran eksperiensial, aksi lingkungan, dan pengembangan kepemimpinan di jantung Aceh.
-            </p>
+            <div className="text-xl md:text-2xl mb-10 font-light max-w-2xl mx-auto text-white/90 flex flex-wrap justify-center items-center gap-2">
+              <span>Bergabunglah dengan</span>
+              <BrandName size="md" className="inline-flex" />
+              <span>untuk pembelajaran eksperiensial, aksi lingkungan, dan pengembangan kepemimpinan di jantung Aceh.</span>
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 hover:scale-105 transition-all rounded-full px-10 h-14 text-lg">
                 <Link href="/programs">Jelajahi Program</Link>
@@ -92,7 +95,11 @@ export default function Home() {
         <section className="py-32 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20 animate-in fade-in duration-700">
-              <h2 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-6">Mengapa Tunong Baroh?</h2>
+              <div className="flex flex-col items-center justify-center gap-4 mb-6">
+                <span className="text-muted-foreground text-xl">Mengapa</span>
+                <BrandName size="lg" withSubtext />
+                <span className="text-muted-foreground text-xl">?</span>
+              </div>
               <div className="h-1.5 w-24 bg-accent mx-auto mb-8 rounded-full" />
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 Kami percaya bahwa cara terbaik untuk belajar adalah melalui pengalaman langsung. Program kami dirancang untuk menantang, mengedukasi, dan menginspirasi.

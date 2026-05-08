@@ -4,30 +4,30 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Tunong Baroh Outdoor Management | Event Organizer & Outbound Aceh',
-    template: '%s | Tunong Baroh'
+    default: 'tunongBARÔH Outdoor Management | Event Organizer & Outbound Aceh',
+    template: '%s | tunongBARÔH'
   },
-  description: 'Tunong Baroh Outdoor Management Training menyediakan pelatihan berbasis alam, program pendidikan sekolah alam, outbound leadership, dan inisiatif lingkungan di Banda Aceh sejak 2006.',
+  description: 'tunongBARÔH Outdoor Management Training menyediakan pelatihan berbasis alam, program pendidikan sekolah alam, outbound leadership, dan inisiatif lingkungan di Banda Aceh sejak 2006.',
   keywords: ['outbound aceh', 'event organizer banda aceh', 'sekolah alam aceh', 'pelatihan leadership aceh', 'penanaman mangrove aceh', 'outdoor management training', 'tunong baroh'],
-  authors: [{ name: 'Tunong Baroh Team' }],
-  creator: 'Tunong Baroh',
-  publisher: 'Tunong Baroh',
+  authors: [{ name: 'tunongBARÔH Team' }],
+  creator: 'tunongBARÔH',
+  publisher: 'tunongBARÔH',
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Tunong Baroh Outdoor Management | Event Organizer & Outbound Aceh',
-    description: 'Solusi pelatihan outdoor, konservasi lingkungan, dan pengembangan karakter di Aceh.',
+    title: 'tunongBARÔH Outdoor Management | Event Organizer & Outbound Aceh',
+    description: 'Solusi pelatihan outdoor, konservasi lingkungan, and pengembangan karakter di Aceh.',
     url: 'https://tunongbaroh.id',
-    siteName: 'Tunong Baroh',
+    siteName: 'tunongBARÔH',
     locale: 'id_ID',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Tunong Baroh Outdoor Management',
+    title: 'tunongBARÔH Outdoor Management',
     description: 'Event Organizer & Outbound Training berbasis alam di Aceh.',
   },
   robots: {
@@ -42,7 +42,6 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    // Ganti nilai di bawah ini dengan kode dari Google Search Console Anda jika sudah ada
     google: 'google-site-verification-placeholder',
   },
 };
