@@ -7,7 +7,13 @@ Proyek ini adalah platform manajemen acara dan katalog program untuk **Tunong Ba
 🚀 **Berhasil Dimigrasi ke GitHub:** [Xpurple27/EventOrganizer_TunongBaroh](https://github.com/Xpurple27/EventOrganizer_TunongBaroh)
 
 ## Deskripsi
-EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dalam merencanakan kegiatan luar ruang (outdoor training), sekolah alam, dan aksi konservasi lingkungan (seperti penanaman mangrove) di wilayah Aceh.
+EcoCatalyst Hub dirancang untuk memudahkan sekolah, instansi, dan organisasi dalam merencanakan kegiatan luar ruang (outdoor training), sekolah alam, dan aksi konservasi lingkungan (seperti penanaman mangrove) di wilayah Aceh. 
+
+Website ini berfungsi sebagai:
+1. **Katalog Program Digital**: Menampilkan berbagai paket pelatihan kepemimpinan, sekolah alam, dan konservasi.
+2. **Sistem Pemesanan (Booking)**: Memudahkan klien untuk merencanakan sesi mereka secara online.
+3. **Rekam Jejak & Portofolio**: Dokumentasi lengkap pengalaman lembaga sejak tahun 2006 sebagai Organizer, Trainer, dan Produsen atribut outdoor.
+4. **Pusat Dampak Lingkungan**: Mengedukasi masyarakat tentang pentingnya pelestarian ekosistem pesisir dan pegunungan di Aceh.
 
 ## Teknologi yang Digunakan
 - **Framework:** Next.js 15 (App Router)
@@ -48,4 +54,4 @@ Jika Anda melakukan perubahan, jalankan perintah ini di terminal:
 - **WhatsApp:** [+62 813-6091-1234](https://wa.me/6281360911234)
 
 ---
-&copy; 2024 Tunong Baroh Event Organizer. Hak Cipta Dilindungi.
+&copy; 2024 Tunong Baroh Outdoor Management. Hak Cipta Dilindungi.
