@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Card, CardContent } from "@/components/ui/card";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { 
@@ -26,16 +26,58 @@ import {
   MapPin, 
   ArrowRight, 
   CheckCircle, 
-  Briefcase 
+  Briefcase,
+  Quote,
+  Sparkles
 } from "lucide-react";
 import { BrandName } from "@/components/ui/brand-name";
 
 const teamMembers = [
-  { slug: "awaludin-azril", name: "Awaludin Azril", role: "Penasehat", initial: "A" },
-  { slug: "dedek-kombi", name: "Dedek Kombi", role: "Direktur Utama", initial: "D" },
-  { slug: "muhammad-wafiq-afansa", name: "Muhammad Wafiq Afansa", role: "Manajer Administrasi", initial: "M" },
-  { slug: "azkan-hazim-qaula", name: "Azkan Hazim Qaula", role: "Manajer Tempat dan Peralatan", initial: "A" },
-  { slug: "himi-abdullah", name: "Himi Abdullah", role: "Manajer Diklat", initial: "H" },
+  { 
+    slug: "awaludin-azril", 
+    name: "Awaludin Azril", 
+    role: "Penasehat", 
+    imageId: "team-awaludin",
+    bio: "Memberikan arahan strategis dan visi jangka panjang bagi Tunong Baroh dengan pengalaman luas dalam kebijakan lingkungan.",
+    motto: "Alam adalah guru terbaik bagi mereka yang mau mendengarkan.",
+    specialties: ["Strategi Lingkungan", "Kebijakan Publik"]
+  },
+  { 
+    slug: "dedek-kombi", 
+    name: "Dedek Kombi", 
+    role: "Direktur Utama", 
+    imageId: "team-dedek",
+    bio: "Memimpin operasional harian dengan fokus pada keunggulan layanan dan menjalin kemitraan strategis berbagai instansi.",
+    motto: "Kolaborasi adalah kunci untuk melestarikan warisan alam kita.",
+    specialties: ["Manajemen Operasional", "Kemitraan"]
+  },
+  { 
+    slug: "muhammad-wafiq-afansa", 
+    name: "Muhammad Wafiq Afansa", 
+    role: "Manajer Administrasi", 
+    imageId: "team-wafiq",
+    bio: "Memastikan kelancaran administrasi dan koordinasi internal untuk tata kelola organisasi yang profesional.",
+    motto: "Sistem yang baik menghasilkan dampak yang berkelanjutan.",
+    specialties: ["Tata Kelola", "Efisiensi Proses"]
+  },
+  { 
+    slug: "azkan-hazim-qaula", 
+    name: "Azkan Hazim Qaula", 
+    role: "Manajer Tempat dan Peralatan", 
+    imageId: "team-azkan",
+    bio: "Bertanggung jawab atas keamanan lokasi dan kualitas peralatan untuk pengalaman outdoor yang aman dan nyaman.",
+    motto: "Keamanan adalah prioritas, pengalaman adalah tujuan.",
+    specialties: ["Logistik Outdoor", "Manajemen Risiko"]
+  },
+  { 
+    slug: "himi-abdullah", 
+    name: "Himi Abdullah", 
+    role: "Manajer Diklat", 
+    imageId: "team-himi",
+    bio: "Merancang kurikulum pelatihan inovatif dengan metode pembelajaran eksperiensial yang transformatif.",
+    motto: "Belajar dari alam, tumbuh bersama pengalaman.",
+    specialties: ["Desain Kurikulum", "Fasilitasi Kelompok"]
+  },
 ];
 
 const pastEvents = [
@@ -114,9 +156,11 @@ export default function ProfilePage() {
                 <History className="h-6 w-6" />
                 <h2 className="text-2xl md:text-3xl font-headline font-bold">Cerita Kami</h2>
               </div>
-              <div className="text-base md:text-lg text-muted-foreground leading-relaxed flex flex-wrap justify-center md:justify-start items-center gap-2">
-                <BrandName size="sm" />
-                <span>Outdoor Management Training lahir dari kecintaan mendalam terhadap alam Aceh dan kebutuhan akan kepemimpinan yang berwawasan lingkungan. Kami percaya bahwa ruang kelas terbaik tidak memiliki dinding, dan guru terbaik adalah pengalaman langsung di alam terbuka.</span>
+              <div className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                <BrandName size="sm" className="inline-flex" />
+                <span className="ml-1">
+                  Outdoor Management Training lahir dari kecintaan mendalam terhadap alam Aceh dan kebutuhan akan kepemimpinan yang berwawasan lingkungan. Kami percaya bahwa ruang kelas terbaik tidak memiliki dinding, dan guru terbaik adalah pengalaman langsung di alam terbuka.
+                </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 pt-4">
                 <div className="flex items-center gap-3 bg-white p-4 rounded-2xl border border-secondary/50">
@@ -135,6 +179,88 @@ export default function ProfilePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Tim Penggerak - Detailed Carousel */}
+        <section className="py-16 md:py-24 bg-secondary/10 overflow-hidden">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-16">
+              <Users className="h-8 w-8 md:h-10 md:w-10 text-primary mx-auto mb-4" />
+              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
+              <p className="text-muted-foreground text-sm md:text-lg max-w-2xl mx-auto">Para profesional berdedikasi tinggi yang menggerakkan perubahan melalui Tunong Baroh.</p>
+            </div>
+
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-6xl mx-auto"
+            >
+              <CarouselContent className="-ml-4">
+                {teamMembers.map((member, index) => {
+                  const imgData = PlaceHolderImages.find(img => img.id === member.imageId);
+                  return (
+                    <CarouselItem key={index} className="pl-4 basis-full md:basis-1/2 lg:basis-1/2">
+                      <Card className="border-none bg-white shadow-xl rounded-[3rem] overflow-hidden group hover:shadow-2xl transition-all h-full border border-transparent hover:border-primary/10">
+                        <CardContent className="p-0">
+                          <div className="flex flex-col h-full">
+                            {/* Card Top: Photo & Basic Info */}
+                            <div className="p-8 md:p-10 flex flex-col md:flex-row gap-8 items-center md:items-start border-b border-secondary/30">
+                              <div className="relative w-32 h-32 md:w-40 md:h-40 shrink-0">
+                                <Avatar className="w-full h-full border-4 border-secondary shadow-lg">
+                                  <AvatarImage 
+                                    src={imgData?.imageUrl} 
+                                    alt={member.name} 
+                                    className="object-cover"
+                                  />
+                                  <AvatarFallback className="bg-primary text-white text-3xl font-bold">
+                                    {member.name.charAt(0)}
+                                  </AvatarFallback>
+                                </Avatar>
+                                <div className="absolute -bottom-2 -right-2 bg-accent p-2 rounded-xl shadow-md">
+                                  <Sparkles className="h-4 w-4 text-accent-foreground" />
+                                </div>
+                              </div>
+                              <div className="text-center md:text-left space-y-3">
+                                <Badge className="bg-secondary text-primary border-none px-3 py-1 text-[10px] font-bold uppercase tracking-widest">
+                                  {member.role}
+                                </Badge>
+                                <h3 className="text-2xl md:text-3xl font-bold text-primary font-headline leading-tight">{member.name}</h3>
+                                <div className="flex items-center justify-center md:justify-start gap-2 text-muted-foreground italic text-sm">
+                                  <Quote className="h-4 w-4 text-accent rotate-180" />
+                                  <p>{member.motto}</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* Card Bottom: Bio & Specialties */}
+                            <div className="p-8 md:p-10 flex-grow bg-primary/5">
+                              <h4 className="text-xs font-bold uppercase tracking-widest text-primary mb-3">Biografi Singkat</h4>
+                              <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
+                                {member.bio}
+                              </p>
+                              <div className="flex flex-wrap gap-2 mt-auto">
+                                {member.specialties.map((spec, i) => (
+                                  <span key={i} className="text-[10px] md:text-xs font-bold bg-white text-primary px-3 py-1.5 rounded-full border border-primary/20 shadow-sm">
+                                    {spec}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </CarouselItem>
+                  );
+                })}
+              </CarouselContent>
+              <div className="flex justify-center gap-6 mt-12">
+                <CarouselPrevious className="static translate-y-0 h-14 w-14 bg-white border-primary/20 text-primary hover:bg-primary hover:text-white shadow-md" />
+                <CarouselNext className="static translate-y-0 h-14 w-14 bg-white border-primary/20 text-primary hover:bg-primary hover:text-white shadow-md" />
+              </div>
+            </Carousel>
           </div>
         </section>
 
@@ -283,52 +409,6 @@ export default function ProfilePage() {
                 </ul>
               </Card>
             </div>
-          </div>
-        </section>
-
-        {/* Tim Penggerak - Carousel Mode */}
-        <section className="py-16 md:py-24 bg-secondary/10 overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-16">
-              <Users className="h-8 w-8 md:h-10 md:w-10 text-primary mx-auto mb-4" />
-              <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-              <p className="text-muted-foreground text-sm md:text-lg">Para profesional berdedikasi tinggi di balik setiap program kami.</p>
-            </div>
-
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              className="w-full max-w-5xl mx-auto"
-            >
-              <CarouselContent className="-ml-4">
-                {teamMembers.map((member, index) => (
-                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
-                    <Link href={`/profile/team/${member.slug}`}>
-                      <Card className="border-none bg-white shadow-xl rounded-[2.5rem] overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all cursor-pointer h-full border border-transparent hover:border-primary/20">
-                        <CardContent className="p-8 text-center flex flex-col items-center">
-                          <Avatar className="w-24 h-24 md:w-28 md:h-28 mb-6 border-4 border-secondary group-hover:border-primary transition-colors shadow-inner">
-                            <AvatarFallback className="bg-primary text-white text-2xl md:text-3xl font-bold font-headline">
-                              {member.initial}
-                            </AvatarFallback>
-                          </Avatar>
-                          <h3 className="text-xl md:text-2xl font-bold text-primary mb-1 font-headline">{member.name}</h3>
-                          <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest mb-6 px-4 py-1 bg-secondary/50 rounded-full">{member.role}</p>
-                          <div className="mt-auto flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
-                            Lihat Profil <ArrowRight className="h-4 w-4" />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </Link>
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="flex justify-center gap-4 mt-12">
-                <CarouselPrevious className="static translate-y-0 h-12 w-12 bg-white border-primary/20 text-primary hover:bg-primary hover:text-white" />
-                <CarouselNext className="static translate-y-0 h-12 w-12 bg-white border-primary/20 text-primary hover:bg-primary hover:text-white" />
-              </div>
-            </Carousel>
           </div>
         </section>
       </main>

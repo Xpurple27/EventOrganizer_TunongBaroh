@@ -83,6 +83,36 @@
       "description": "Kegiatan Outbound Tunong Baroh 3",
       "imageUrl": "/outbound/outbound-3.jpg",
       "imageHint": "forest game"
+    },
+    {
+      "id": "team-awaludin",
+      "description": "Foto Awaludin Azril",
+      "imageUrl": "https://picsum.photos/seed/person1/400/400",
+      "imageHint": "professional man"
+    },
+    {
+      "id": "team-dedek",
+      "description": "Foto Dedek Kombi",
+      "imageUrl": "https://picsum.photos/seed/person2/400/400",
+      "imageHint": "leader man"
+    },
+    {
+      "id": "team-wafiq",
+      "description": "Foto Muhammad Wafiq Afansa",
+      "imageUrl": "https://picsum.photos/seed/person3/400/400",
+      "imageHint": "office man"
+    },
+    {
+      "id": "team-azkan",
+      "description": "Foto Azkan Hazim Qaula",
+      "imageUrl": "https://picsum.photos/seed/person4/400/400",
+      "imageHint": "outdoor man"
+    },
+    {
+      "id": "team-himi",
+      "description": "Foto Himi Abdullah",
+      "imageUrl": "https://picsum.photos/seed/person5/400/400",
+      "imageHint": "educator man"
     }
   ]
 }
