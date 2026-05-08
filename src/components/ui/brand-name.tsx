@@ -7,7 +7,7 @@ interface BrandNameProps {
   withSubtext?: boolean;
 }
 
-export function BrandName({ className, size = "md", withSubtext = false }: BrandNameProps) {
+export function BrandName({ className, size = "md" }: BrandNameProps) {
   const sizeClasses = {
     xs: "text-[10px] md:text-xs",
     sm: "text-xs md:text-sm",
@@ -18,7 +18,7 @@ export function BrandName({ className, size = "md", withSubtext = false }: Brand
   };
 
   return (
-    <div className={cn("flex flex-col items-start", className)}>
+    <div className={cn("flex items-center", className)}>
       <div className="flex items-baseline leading-none">
         <span 
           style={{ fontFamily: '"Berlin Sans FB", "Arial Rounded MT Bold", sans-serif' }} 
@@ -33,16 +33,6 @@ export function BrandName({ className, size = "md", withSubtext = false }: Brand
           BARÔH
         </span>
       </div>
-      {withSubtext && (
-        <>
-          <div className="w-full h-[1.5px] bg-repeat-x bg-[length:8px_2px] mt-0.5" 
-               style={{ backgroundImage: 'linear-gradient(45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%), linear-gradient(-45deg, transparent 33.333%, #FF0000 33.333%, #FF0000 66.666%, transparent 66.666%)' }}>
-          </div>
-          <span className={cn("uppercase tracking-[0.1em] font-medium text-black mt-0.5", size === "xl" ? "text-xs" : "text-[8px] md:text-[10px]")}>
-            training - organizer - distribution
-          </span>
-        </>
-      )}
     </div>
   );
 }
