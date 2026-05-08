@@ -9,8 +9,25 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselNext, 
+  CarouselPrevious 
+} from "@/components/ui/carousel";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
-import { Target, History, Users, Award, ShieldCheck, MapPin, ArrowRight, Calendar, CheckCircle, Briefcase, GraduationCap, Package2 } from "lucide-react";
+import { 
+  Target, 
+  History, 
+  Users, 
+  Award, 
+  ShieldCheck, 
+  MapPin, 
+  ArrowRight, 
+  CheckCircle, 
+  Briefcase 
+} from "lucide-react";
 import { BrandName } from "@/components/ui/brand-name";
 
 const teamMembers = [
@@ -72,7 +89,7 @@ export default function ProfilePage() {
                 Mengenal Kami
               </Badge>
               <div className="mb-4 md:mb-6">
-                <BrandName size="xl" withSubtext />
+                <BrandName size="xl" />
               </div>
               <p className="text-lg md:text-2xl font-light text-primary-foreground/90 leading-relaxed max-w-2xl mx-auto md:mx-0">
                 Dedikasi untuk pengembangan karakter melalui alam dan aksi nyata pelestarian lingkungan di Aceh sejak 2006.
@@ -134,7 +151,6 @@ export default function ProfilePage() {
             </div>
 
             <Tabs defaultValue="organizer" className="w-full">
-              {/* Responsive Tabs List with Horizontal Scroll */}
               <div className="flex justify-center mb-8">
                 <div className="w-full md:w-auto overflow-x-auto no-scrollbar pb-2">
                   <TabsList className="bg-white p-1 rounded-2xl shadow-sm border border-secondary h-auto inline-flex min-w-full md:min-w-0">
@@ -270,33 +286,49 @@ export default function ProfilePage() {
           </div>
         </section>
 
-        {/* Tim Penggerak */}
-        <section className="py-16 md:py-24 bg-secondary/10">
+        {/* Tim Penggerak - Carousel Mode */}
+        <section className="py-16 md:py-24 bg-secondary/10 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-12">
+            <div className="text-center mb-16">
               <Users className="h-8 w-8 md:h-10 md:w-10 text-primary mx-auto mb-4" />
               <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">Tim Penggerak</h2>
-              <p className="text-muted-foreground text-sm md:text-lg">Para profesional di balik program-gram kami.</p>
+              <p className="text-muted-foreground text-sm md:text-lg">Para profesional berdedikasi tinggi di balik setiap program kami.</p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {teamMembers.map((member, index) => (
-                <Link href={`/profile/team/${member.slug}`} key={index}>
-                  <Card className="border-none bg-white shadow-md rounded-3xl overflow-hidden group hover:shadow-xl hover:scale-[1.02] transition-all cursor-pointer h-full">
-                    <CardContent className="p-6 text-center flex flex-col items-center">
-                      <Avatar className="w-20 h-20 md:w-24 md:h-24 mb-4 md:mb-6 border-4 border-secondary group-hover:border-primary transition-colors">
-                        <AvatarFallback className="bg-primary text-white text-xl md:text-2xl font-bold">{member.initial}</AvatarFallback>
-                      </Avatar>
-                      <h3 className="text-lg md:text-xl font-bold text-primary mb-1 font-headline">{member.name}</h3>
-                      <p className="text-[10px] md:text-xs text-muted-foreground font-bold uppercase tracking-widest mb-4">{member.role}</p>
-                      <div className="flex items-center gap-1 text-primary text-[10px] font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                        Profil Lengkap <ArrowRight className="h-3 w-3" />
-                      </div>
-                    </CardContent>
-                  </Card>
-                </Link>
-              ))}
-            </div>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-5xl mx-auto"
+            >
+              <CarouselContent className="-ml-4">
+                {teamMembers.map((member, index) => (
+                  <CarouselItem key={index} className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3">
+                    <Link href={`/profile/team/${member.slug}`}>
+                      <Card className="border-none bg-white shadow-xl rounded-[2.5rem] overflow-hidden group hover:shadow-2xl hover:scale-[1.02] transition-all cursor-pointer h-full border border-transparent hover:border-primary/20">
+                        <CardContent className="p-8 text-center flex flex-col items-center">
+                          <Avatar className="w-24 h-24 md:w-28 md:h-28 mb-6 border-4 border-secondary group-hover:border-primary transition-colors shadow-inner">
+                            <AvatarFallback className="bg-primary text-white text-2xl md:text-3xl font-bold font-headline">
+                              {member.initial}
+                            </AvatarFallback>
+                          </Avatar>
+                          <h3 className="text-xl md:text-2xl font-bold text-primary mb-1 font-headline">{member.name}</h3>
+                          <p className="text-xs text-muted-foreground font-bold uppercase tracking-widest mb-6 px-4 py-1 bg-secondary/50 rounded-full">{member.role}</p>
+                          <div className="mt-auto flex items-center gap-2 text-primary font-bold text-sm group-hover:translate-x-1 transition-transform">
+                            Lihat Profil <ArrowRight className="h-4 w-4" />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </Link>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="flex justify-center gap-4 mt-12">
+                <CarouselPrevious className="static translate-y-0 h-12 w-12 bg-white border-primary/20 text-primary hover:bg-primary hover:text-white" />
+                <CarouselNext className="static translate-y-0 h-12 w-12 bg-white border-primary/20 text-primary hover:bg-primary hover:text-white" />
+              </div>
+            </Carousel>
           </div>
         </section>
       </main>
