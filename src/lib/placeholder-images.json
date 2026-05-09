@@ -3,25 +3,25 @@
     {
       "id": "hero-nature",
       "description": "Lush green forest background",
-      "imageUrl": "https://picsum.photos/seed/forest1/1920/1080",
+      "imageUrl": "/outbound/lanskap seulawah.png",
       "imageHint": "forest nature"
     },
     {
       "id": "outdoor-training",
       "description": "Team building exercise outdoors",
-      "imageUrl": "https://picsum.photos/seed/team1/800/600",
+      "imageUrl": "/outbound/outbound1.png",
       "imageHint": "outdoor training"
     },
     {
       "id": "mangrove-planting",
       "description": "People planting mangrove seedlings",
-      "imageUrl": "/outbound/camping.jpg",
+      "imageUrl": "/outbound/penanamanmangrove.png",
       "imageHint": "mangrove planting"
     },
     {
       "id": "nature-school",
       "description": "Children learning in a forest environment",
-      "imageUrl": "https://picsum.photos/seed/school1/800/600",
+      "imageUrl": "penyemaianbibit.png",
       "imageHint": "nature school"
     },
     {
@@ -33,7 +33,7 @@
     {
       "id": "gallery-1",
       "description": "Reforestation activity",
-      "imageUrl": "https://picsum.photos/seed/reforest/600/400",
+      "imageUrl": "/outbound/hastakarya.png",
       "imageHint": "reforestation"
     },
     {
