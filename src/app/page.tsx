@@ -95,13 +95,13 @@ export default function Home() {
         <section className="py-32 bg-background">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-20 animate-in fade-in duration-700">
-              <div className="flex flex-col items-center justify-center gap-4 mb-6">
-                <span className="text-muted-foreground text-xl">Mengapa</span>
-                <BrandName size="lg" withSubtext />
-                <span className="text-muted-foreground text-xl">?</span>
+              <div className="flex flex-row items-center justify-center gap-3 mb-6 flex-wrap">
+                <span className="text-muted-foreground text-xl md:text-2xl">Mengapa</span>
+                <BrandName size="lg" />
+                <span className="text-muted-foreground text-xl md:text-2xl">?</span>
               </div>
               <div className="h-1.5 w-24 bg-accent mx-auto mb-8 rounded-full" />
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Kami percaya bahwa cara terbaik untuk belajar adalah melalui pengalaman langsung. Program kami dirancang untuk menantang, mengedukasi, dan menginspirasi.
               </p>
             </div>
